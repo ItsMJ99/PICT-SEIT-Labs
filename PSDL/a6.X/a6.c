@@ -1,5 +1,5 @@
-#include<xc.h>
 #include<pic18f4550.h>
+#include<xc.h>
 
 void delay(){
     for(int i=0;i<2000;i++){
