@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.41 build 20230208172133 
-                                                                                               Mon Jun 05 21:55:18 2023
+                                                                                               Tue Jun 06 21:28:41 2023
 
 Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1 
      1                           	processor	18F4550
@@ -108,7 +108,7 @@ Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1
     94 ;;
     95 ;; *************** function _main *****************
     96 ;; Defined at:
-    97 ;;		line 21 in file "a6.c"
+    97 ;;		line 29 in file "a6.c"
     98 ;; Parameters:    Size  Location     Type
     99 ;;		None
    100 ;; Auto vars:     Size  Location     Type
@@ -141,25 +141,25 @@ Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1
    127   000086                     _main:
    128                           	callstack 29
    129   000086                     
-   130                           ;a6.c: 22:     TRISAbits.TRISA4=0;
+   130                           ;a6.c: 30:     TRISAbits.TRISA4=0;
    131   000086  9892               	bcf	146,4,c	;volatile
    132                           
-   133                           ;a6.c: 23:     TRISBbits.TRISB1=1;
+   133                           ;a6.c: 31:     TRISBbits.TRISB1=1;
    134   000088  8293               	bsf	147,1,c	;volatile
    135                           
-   136                           ;a6.c: 24:     INTCON2bits.INTEDG1=0;
+   136                           ;a6.c: 32:     INTCON2bits.INTEDG1=0;
    137   00008A  9AF1               	bcf	241,5,c	;volatile
    138                           
-   139                           ;a6.c: 25:     INTCON3bits.INT1IF=0;
+   139                           ;a6.c: 33:     INTCON3bits.INT1IF=0;
    140   00008C  90F0               	bcf	240,0,c	;volatile
    141                           
-   142                           ;a6.c: 26:     INTCON3bits.INT1IE=1;
+   142                           ;a6.c: 34:     INTCON3bits.INT1IE=1;
    143   00008E  86F0               	bsf	240,3,c	;volatile
    144                           
-   145                           ;a6.c: 27:     INTCONbits.PEIE=1;
+   145                           ;a6.c: 35:     INTCONbits.PEIE=1;
    146   000090  8CF2               	bsf	242,6,c	;volatile
    147                           
-   148                           ;a6.c: 28:     INTCONbits.GIE=1;
+   148                           ;a6.c: 36:     INTCONbits.GIE=1;
    149   000092  8EF2               	bsf	242,7,c	;volatile
    150   000094                     l30:
    151   000094  EF4A  F000         	goto	l30
@@ -169,7 +169,7 @@ Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1
    155                           
    156 ;; *************** function _relay *****************
    157 ;; Defined at:
-   158 ;;		line 10 in file "a6.c"
+   158 ;;		line 17 in file "a6.c"
    159 ;; Parameters:    Size  Location     Type
    160 ;;		None
    161 ;; Auto vars:     Size  Location     Type
@@ -214,7 +214,7 @@ Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1
    200                           	callstack 29
    201   000064  0006               	pop		; remove dummy address from shadow register refresh
    202   000066                     
-   203                           ;a6.c: 11:     if(INTCON3bits.INT1IF==1){
+   203                           ;a6.c: 19:     if(INTCON3bits.INT1IF==1){
    204   000066  A0F0               	btfss	240,0,c	;volatile
    205   000068  EF38  F000         	goto	i2u3_41
    206   00006C  EF3A  F000         	goto	i2u3_40
@@ -222,23 +222,23 @@ Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1
    208   000070  EF3F  F000         	goto	i2l737
    209   000074                     i2u3_40:
    210   000074                     
-   211                           ;a6.c: 12:         INTCONbits.GIE=0;
+   211                           ;a6.c: 20:         INTCONbits.GIE=0;
    212   000074  9EF2               	bcf	242,7,c	;volatile
    213                           
-   214                           ;a6.c: 13:         PORTAbits.RA4=1;
+   214                           ;a6.c: 21:         PORTAbits.RA4=1;
    215   000076  8880               	bsf	128,4,c	;volatile
    216   000078                     
-   217                           ;a6.c: 14:         delay();
+   217                           ;a6.c: 22:         delay();
    218   000078  EC09  F000         	call	_delay	;wreg free
    219   00007C                     
-   220                           ;a6.c: 15:         PORTAbits.RA4=0;
+   220                           ;a6.c: 23:         PORTAbits.RA4=0;
    221   00007C  9880               	bcf	128,4,c	;volatile
    222   00007E                     i2l737:
    223                           
-   224                           ;a6.c: 17:     INTCON3bits.INT1IF=0;
+   224                           ;a6.c: 25:     INTCON3bits.INT1IF=0;
    225   00007E  90F0               	bcf	240,0,c	;volatile
    226   000080                     
-   227                           ;a6.c: 18:     INTCONbits.GIE=1;
+   227                           ;a6.c: 26:     INTCONbits.GIE=1;
    228   000080  8EF2               	bsf	242,7,c	;volatile
    229   000082  9205               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
    230   000084  0011               	retfie		f
@@ -247,7 +247,7 @@ Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1
    233                           
    234 ;; *************** function _delay *****************
    235 ;; Defined at:
-   236 ;;		line 4 in file "a6.c"
+   236 ;;		line 10 in file "a6.c"
    237 ;; Parameters:    Size  Location     Type
    238 ;;		None
    239 ;; Auto vars:     Size  Location     Type
@@ -281,14 +281,14 @@ Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1
    267   000012                     _delay:
    268                           	callstack 29
    269   000012                     
-   270                           ;a6.c: 5:     for(int i=0;i<2000;i++){
+   270                           ;a6.c: 11:     for(int i=0;i<2000;i++){
    271   000012  0E00               	movlw	0
    272   000014  6E02               	movwf	(delay@i+1)^0,c
    273   000016  0E00               	movlw	0
    274   000018  6E01               	movwf	delay@i^0,c
    275   00001A                     i2l715:
    276                           
-   277                           ;a6.c: 6:         for(int j=0;j<2000;j++);
+   277                           ;a6.c: 12:         for(int j=0;j<2000;j++);
    278   00001A  0E00               	movlw	0
    279   00001C  6E04               	movwf	(delay@j+1)^0,c
    280   00001E  0E00               	movlw	0
@@ -309,7 +309,7 @@ Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1
    295   00003E  EF11  F000         	goto	i2l721
    296   000042                     i2u1_40:
    297   000042                     
-   298                           ;a6.c: 7:     }
+   298                           ;a6.c: 13:     }
    299   000042  4A01               	infsnz	delay@i^0,f,c
    300   000044  2A02               	incf	(delay@i+1)^0,f,c
    301   000046  BE02               	btfsc	(delay@i+1)^0,7,c
@@ -727,7 +727,7 @@ SFR                  0      0       0     200        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.41 build 20230208172133 
-Symbol Table                                                                                   Mon Jun 05 21:55:18 2023
+Symbol Table                                                                                   Tue Jun 06 21:28:41 2023
 
                      l30 0094                       l31 0094                      l741 0086  
                    i2l25 0082                     i2l19 0062                     _main 0086  

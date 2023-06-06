@@ -11,7 +11,7 @@ int is mainly used so we have to return 0*/
 int main(void){
     
     //declares an int array of 100 size
-    int arr[100];
+    int arr[78];
     //declares int sum which will store the sum of array values
     int sum=0;
     
@@ -21,7 +21,7 @@ int main(void){
     
     //0 to 99 = 100
     for(int i=0;i<100;i++){
-        arr[i]=1;//all values in the array will be 1
+        arr[i]=i+1;//all values in the array will be 1
         sum+=arr[i];//each value is added to sum
     }
     

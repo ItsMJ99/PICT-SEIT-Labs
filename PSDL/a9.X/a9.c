@@ -1,4 +1,5 @@
 //Assignment 9 LCD interfacing with Temperature Sensor using ADC.
+
 #include <xc.h>
 #include <pic18f4550.h>
 #include <stdio.h>
@@ -37,8 +38,7 @@ void sendData(int data) {
 int readTemp() {
     ADCON0 = 0b00011101;     // ADC on; Select channel
     ADCON0bits.GO_DONE = 1;  // Start Conversion
-    while (ADCON0bits.GO_DONE == 1)
-        ;          // Wait till A/D conversion is complete
+    while (ADCON0bits.GO_DONE == 1);// Wait till A/D conversion is complete
     return ADRES;  // Return ADC result
 }
 
@@ -67,3 +67,4 @@ int main() {
     }
     return 0;
 }
+

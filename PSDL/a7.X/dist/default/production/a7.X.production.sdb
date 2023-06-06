@@ -3,9 +3,9 @@
 [d edition pro ]
 [d chip 18F4550 ]
 [d frameptr 4065 ]
-"4 E:\MJ\COLLEGE\PICT\PICT SEIT Labs\PSDL\a7.X\a7.c
+"9 E:\MJ\COLLEGE\PICT\PICT SEIT Labs\PSDL\a7.X\a7.c
 [v _delay delay `(v  1 e 1 0 ]
-"10
+"15
 [v _main main `(i  1 e 2 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
@@ -35,7 +35,7 @@
 [v _PORTB PORTB `VEuc  1 e 1 @3969 ]
 "3626
 [v _TRISB TRISB `VEuc  1 e 1 @3987 ]
-[s S31 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S29 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 . 1 0 :3:3 
@@ -43,15 +43,15 @@
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "3876
-[s S38 . 1 `uc 1 RC0 1 0 :1:0 
+[s S36 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 . 1 0 :3:3 
 `uc 1 RC6 1 0 :1:6 
 `uc 1 RC7 1 0 :1:7 
 ]
-[u S45 . 1 `S31 1 . 1 0 `S38 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES45  1 e 1 @3988 ]
+[u S43 . 1 `S29 1 . 1 0 `S36 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES43  1 e 1 @3988 ]
 "6328
 [v _CCP1CON CCP1CON `VEuc  1 e 1 @4029 ]
 "6497
@@ -83,19 +83,19 @@
 [v _PR2 PR2 `VEuc  1 e 1 @4043 ]
 "7409
 [v _TMR2 TMR2 `VEuc  1 e 1 @4044 ]
-"10 E:\MJ\COLLEGE\PICT\PICT SEIT Labs\PSDL\a7.X\a7.c
+"15 E:\MJ\COLLEGE\PICT\PICT SEIT Labs\PSDL\a7.X\a7.c
 [v _main main `(i  1 e 2 0 ]
 {
-"21
+"26
 [v main@i i `i  1 a 2 4 ]
-"28
+"33
 } 0
-"4
+"9
 [v _delay delay `(v  1 e 1 0 ]
 {
-"6
+"11
 [v delay@j j `i  1 a 2 2 ]
-"5
+"10
 [v delay@i i `i  1 a 2 0 ]
-"8
+"13
 } 0

@@ -10079,17 +10079,17 @@ unsigned char __t3rd16on(void);
 int main(void){
 
 
-    int arr[100];
+    int arr[78];
 
     int sum=0;
 
 
 
-    BSR=0x00;
+
 
 
     for(int i=0;i<100;i++){
-        arr[i]=1;
+        arr[i]=i+1;
         sum+=arr[i];
     }
 # 35 "a2.c"
