@@ -6,10 +6,10 @@ Linker command line:
   --edf=C:\Program Files\Microchip\xc8\v2.41\pic\dat\20230208172133_en.msgs \
   -cn -h+dist/default/production\a4.X.production.sym \
   --cmf=dist/default/production\a4.X.production.cmf -z -Q18F4550 \
-  -oC:\Users\MADHAV\AppData\Local\Temp\xcAsm3c.\driver_tmp_3.o \
+  -oC:\Users\MADHAV\AppData\Local\Temp\xcAsfu0.\driver_tmp_3.o \
   --defsym=__MPLAB_BUILD=1 --fixupoverflow=error \
   -Mdist/default/production/a4.X.production.map \
-  --md=C:\Users\MADHAV\AppData\Local\Temp\xcAsm3c.\driver_tmp_0.dat -E1 \
+  --md=C:\Users\MADHAV\AppData\Local\Temp\xcAsfu0.\driver_tmp_0.dat -E1 \
   -ver=XC8 Compiler --acfsm=1493 -ACODE=0800h-07FFFh -ACONST=0800h-07FFFh \
   -ASMALLCONST=0800h-08FFhx120 -AMEDIUMCONST=0800h-07FFFh -ACOMRAM=01h-05Fh \
   -AABS1=00h-07FFh -ABIGRAM=01h-07FFh -ARAM=060h-0FFh,0100h-01FFhx7 \
@@ -25,7 +25,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\MADHAV\AppData\Local\Temp\xcAsm3c.\driver_tmp_9.o \
+  C:\Users\MADHAV\AppData\Local\Temp\xcAsfu0.\driver_tmp_9.o \
   dist/default/production\a4.X.production.o 
 
 Object code version is 3.11
@@ -35,7 +35,7 @@ Machine type is 18F4550
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\MADHAV\AppData\Local\Temp\xcAsm3c.\driver_tmp_9.o
+C:\Users\MADHAV\AppData\Local\Temp\xcAsfu0.\driver_tmp_9.o
                 idloc                            200000   200000        8        0       5
                 config                           300000   300000        E        0       4
                 init                                804      804        4      400       0
@@ -138,7 +138,6 @@ UNUSED ADDRESS RANGES
 
                                   Symbol Table
 
-_Delay                   text1        007FDC
 _INTCONbits              (abs)        000FF2
 _PORTB                   (abs)        000F81
 _T0CON                   (abs)        000FD5
@@ -286,8 +285,8 @@ ___rparam_used           (abs)        000001
 ___sp                    stack        000000
 __accesstop              (abs)        000060
 __activetblptr           (abs)        000000
-__end_of_Delay           text1        008000
 __end_of__initialization cinit        007FC0
+__end_of_delay           text1        008000
 __end_of_main            text0        007FDC
 __initialization         cinit        007FC0
 __mediumconst            mediumconst  000000
@@ -297,6 +296,7 @@ __ptext0                 text0        007FC6
 __ptext1                 text1        007FDC
 __ramtop                 ramtop       000800
 __smallconst             smallconst   000000
+_delay                   text1        007FDC
 _main                    text0        007FC6
 end_of_initialization    cinit        007FC0
 intlevel0                text         000000
@@ -320,8 +320,8 @@ shared
 shared estimated size: 1
 
 a4.c
+		_delay         		CODE           	7FDC	0000	36
 		_main          		CODE           	7FC6	0000	22
-		_Delay         		CODE           	7FDC	0000	36
 
 a4.c estimated size: 58
 

@@ -97,6 +97,7 @@ ___heap_lo 0 0 ABS 0
 end_of_initialization 3E1C 0 CODE 0
 ___wmul@multiplicand 3 0 COMRAM 1
 main@choice 8 0 COMRAM 1
+__cntErrataNOP_C:\Users\MADHAV\AppData\Local\Temp\xcAsr90.\driver_tmp_9.o 1 0 ABS 0
 __Hibigdata 0 0 CODE 0
 __Libigdata 0 0 CODE 0
 __Hifardata 0 0 CODE 0
@@ -174,7 +175,6 @@ __end_of___lwmod 3ECA 0 CODE 0
 ___lwmod@divisor 3 0 COMRAM 1
 ___intlo_sp 0 0 STACK 2
 ___lwdiv@divisor 3 0 COMRAM 1
-__cntErrataNOP_C:\Users\MADHAV\AppData\Local\Temp\xcAsisc.\driver_tmp_9.o 1 0 ABS 0
 __smallconst 0 0 SMALLCONST 0
 __Hreset_vec 2 0 CODE 0
 __Lreset_vec 0 0 CODE 0
@@ -205,7 +205,7 @@ cinit 3E1C 3E21 CODE 3E1C 0
 text 3E1A 3E1B CODE 3E1A 0
 %locals
 dist/default/debug\a3.X.debug.o
-C:\Users\MADHAV\AppData\Local\Temp\xcAsisc.\driver_tmp_1.s
+C:\Users\MADHAV\AppData\Local\Temp\xcAsr90.\driver_tmp_1.s
 639 3E1C 0 CODE 0
 641 3E1C 0 CODE 0
 644 3E1C 0 CODE 0

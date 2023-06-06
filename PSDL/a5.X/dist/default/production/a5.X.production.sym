@@ -1,16 +1,15 @@
-__S0 8DC 0 ABS 0
+__S0 8D0 0 ABS 0
 __S1 6 0 ABS 0
 __S4 0 0 ABS 0
 __S5 0 0 ABS 0
-_ISR 808 0 CODE 0
 __Hintentry 0 0 ABS 0
 __Lintentry 0 0 ABS 0
 _TMR1 FCE 0 ABS 0
-_main 8A8 0 CODE 0
+_main 8A4 0 CODE 0
 ___sp 0 0 STACK 2
 btemp 5 0 COMRAM 1
 start 80E 0 CODE 0
-_buzz 1 0 COMRAM 1
+_buzz 3 0 COMRAM 1
 __Hirdata 0 0 CODE 0
 __Lirdata 0 0 CODE 0
 __HRAM 0 0 ABS 0
@@ -37,9 +36,9 @@ __Lbss 0 0 RAM 1
 ___param_bank 0 0 ABS 0
 __Hnvrram 0 0 COMRAM 1
 __Lnvrram 0 0 COMRAM 1
-_count 3 0 COMRAM 1
+_count 1 0 COMRAM 1
+_buzzbeep 808 0 CODE 0
 int$flags 5 0 COMRAM 1
-__end_of_ISR 8A8 0 CODE 0
 __Hbigsfr 0 0 ABS 0
 __Lbigsfr 0 0 ABS 0
 _PIE1bits F9D 0 ABS 0
@@ -89,12 +88,12 @@ __Linit 80E 0 CODE 0
 __Hintcodelo 80E 0 CODE 0
 __Lintcodelo 80E 0 CODE 0
 __Hrbss 0 0 COMRAM 1
-__end_of_main 8CA 0 CODE 0
+__end_of_main 8BE 0 CODE 0
 __Lrbss 0 0 COMRAM 1
 __Htext 0 0 ABS 0
 __Ltext 0 0 ABS 0
 ___heap_lo 0 0 ABS 0
-end_of_initialization 8D2 0 CODE 0
+end_of_initialization 8C6 0 CODE 0
 _TRISAbits F92 0 ABS 0
 _PORTAbits F80 0 ABS 0
 _T1CONbits FCD 0 ABS 0
@@ -122,13 +121,14 @@ __Hbank7 0 0 ABS 0
 __Lbank7 0 0 ABS 0
 __Htext0 0 0 ABS 0
 __Ltext0 0 0 ABS 0
-__ptext0 8A8 0 CODE 0
+__ptext0 8A4 0 CODE 0
 __HbssCOMRAM 0 0 ABS 0
 __LbssCOMRAM 0 0 ABS 0
 __pbssCOMRAM 1 0 COMRAM 1
+__end_of_buzzbeep 8A4 0 CODE 0
 __Hclrtext 0 0 ABS 0
 __Lclrtext 0 0 ABS 0
-__end_of__initialization 8D2 0 CODE 0
+__end_of__initialization 8C6 0 CODE 0
 ___rparam_used 1 0 ABS 0
 __H__absolute__ 0 0 ABS 0
 __L__absolute__ 0 0 ABS 0
@@ -143,7 +143,7 @@ __Lstack 0 0 STACK 2
 int_func 812 0 CODE 0
 __Hparam 0 0 COMRAM 1
 __Lparam 0 0 COMRAM 1
-__Hspace_0 8DC 0 ABS 0
+__Hspace_0 8D0 0 ABS 0
 __HcstackCOMRAM 0 0 ABS 0
 __Lspace_0 0 0 ABS 0
 __LcstackCOMRAM 0 0 ABS 0
@@ -158,7 +158,7 @@ __Hnvbit 0 0 COMRAM 1
 __Lnvbit 0 0 COMRAM 1
 __Hcinit 0 0 ABS 0
 __Lcinit 0 0 ABS 0
-__pcinit 8CA 0 CODE 0
+__pcinit 8BE 0 CODE 0
 __ramtop 800 0 RAM 0
 __mediumconst 0 0 MEDIUMCONST 0
 __Hconst 0 0 CONST 0
@@ -179,59 +179,55 @@ intlevel0 0 0 CODE 0
 intlevel1 0 0 CODE 0
 intlevel2 0 0 CODE 0
 intlevel3 0 0 CODE 0
-start_initialization 8CA 0 CODE 0
-__initialization 8CA 0 CODE 0
+start_initialization 8BE 0 CODE 0
+__initialization 8BE 0 CODE 0
 __activetblptr 0 0 ABS 0
 %segments
 reset_vec 800 803 CODE 800 0
-intcode 808 8DB CODE 808 0
+intcode 808 8CF CODE 808 0
 bssCOMRAM 1 5 COMRAM 1 1
 %locals
 dist/default/production\a5.X.production.o
-C:\Users\MADHAV\AppData\Local\Temp\xcAs6bs.\driver_tmp_1.s
-481 8CA 0 CODE 0
-483 8CA 0 CODE 0
-486 8CA 0 CODE 0
-501 8CA 0 CODE 0
-502 8CC 0 CODE 0
-503 8CE 0 CODE 0
-504 8D0 0 CODE 0
-510 8D2 0 CODE 0
-512 8D2 0 CODE 0
-513 8D4 0 CODE 0
-514 8D6 0 CODE 0
-515 8D8 0 CODE 0
+C:\Users\MADHAV\AppData\Local\Temp\xcAs7s0.\driver_tmp_1.s
+481 8BE 0 CODE 0
+483 8BE 0 CODE 0
+486 8BE 0 CODE 0
+501 8BE 0 CODE 0
+502 8C0 0 CODE 0
+503 8C2 0 CODE 0
+504 8C4 0 CODE 0
+510 8C6 0 CODE 0
+512 8C6 0 CODE 0
+513 8C8 0 CODE 0
+514 8CA 0 CODE 0
+515 8CC 0 CODE 0
 a5.c
-27 8A8 0 CODE 0
-28 8A8 0 CODE 0
-29 8AC 0 CODE 0
-31 8B4 0 CODE 0
-32 8B6 0 CODE 0
-33 8B8 0 CODE 0
-34 8BA 0 CODE 0
-35 8BC 0 CODE 0
-36 8BE 0 CODE 0
-37 8C0 0 CODE 0
-38 8C2 0 CODE 0
-C:\Users\MADHAV\AppData\Local\Temp\xcAs6bs.\driver_tmp_1.s
-826 808 0 CODE 0
+36 8A4 0 CODE 0
+37 8A4 0 CODE 0
+38 8A8 0 CODE 0
+39 8AA 0 CODE 0
+40 8AC 0 CODE 0
+41 8AE 0 CODE 0
+42 8B0 0 CODE 0
+43 8B2 0 CODE 0
+44 8B4 0 CODE 0
+45 8B6 0 CODE 0
+C:\Users\MADHAV\AppData\Local\Temp\xcAs7s0.\driver_tmp_1.s
+820 808 0 CODE 0
 a5.c
-7 808 0 CODE 0
+14 808 0 CODE 0
 a5.c
-7 812 0 CODE 0
-8 814 0 CODE 0
-9 822 0 CODE 0
-10 824 0 CODE 0
-11 828 0 CODE 0
-12 84E 0 CODE 0
-13 856 0 CODE 0
-14 858 0 CODE 0
-16 860 0 CODE 0
-17 886 0 CODE 0
-18 88E 0 CODE 0
-19 890 0 CODE 0
-20 898 0 CODE 0
-21 898 0 CODE 0
-22 8A0 0 CODE 0
-23 8A2 0 CODE 0
-25 8A4 0 CODE 0
+14 812 0 CODE 0
+17 814 0 CODE 0
+19 822 0 CODE 0
+20 848 0 CODE 0
+21 850 0 CODE 0
+22 852 0 CODE 0
+24 85A 0 CODE 0
+25 880 0 CODE 0
+26 888 0 CODE 0
+27 88A 0 CODE 0
+29 892 0 CODE 0
+30 896 0 CODE 0
+31 898 0 CODE 0
+34 8A0 0 CODE 0

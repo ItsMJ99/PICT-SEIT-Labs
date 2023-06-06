@@ -7,6 +7,9 @@
 # 1 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "a1.c" 2
+
+
+
 # 1 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -10065,18 +10068,16 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\\pic\\include\\xc.h" 2 3
-# 1 "a1.c" 2
+# 4 "a1.c" 2
 
 
 
 int main(){
-    TMR0=0xff;
-    TMR1=0x05;
+    TMR0=0xA7;
+    TMR1=0x3F;
     TRISB=0;
     PORTB=TMR0+TMR1;
 
-    TMR0=0x0A;
-    TMR1=0x05;
     TRISC=0;
     PORTC=TMR0-TMR1;
     return 0;

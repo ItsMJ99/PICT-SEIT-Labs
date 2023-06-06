@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.41 build 20230208172133 
-                                                                                               Tue Jun 06 00:17:42 2023
+                                                                                               Tue Jun 06 16:31:49 2023
 
 Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1 
      1                           	processor	18F458
@@ -184,14 +184,14 @@ Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1
    170   003F60  0E00               	movlw	0
    171   003F62  6E94               	movwf	148,c	;volatile
    172                           
-   173                           ;a3.c: 15:     TMR1=0x02;
+   173                           ;a3.c: 15:     TMR1=0x3A;
    174   003F64  0E00               	movlw	0
    175   003F66  6ECF               	movwf	207,c	;volatile
-   176   003F68  0E02               	movlw	2
+   176   003F68  0E3A               	movlw	58
    177   003F6A  6ECE               	movwf	206,c	;volatile
    178                           
-   179                           ;a3.c: 16:     TMR2=0x10;
-   180   003F6C  0E10               	movlw	16
+   179                           ;a3.c: 16:     TMR2=0xAE88;
+   180   003F6C  0E88               	movlw	136
    181   003F6E  6ECC               	movwf	204,c	;volatile
    182                           
    183                           ;a3.c: 20:     int choice=0xF;
@@ -843,7 +843,7 @@ SFR                  0      0       0     200        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.41 build 20230208172133 
-Symbol Table                                                                                   Tue Jun 06 00:17:42 2023
+Symbol Table                                                                                   Tue Jun 06 16:31:49 2023
 
                                            l31 3E48                                             u90 3EE8  
                                            u91 3EE2                            ___wmul@multiplicand 0003  

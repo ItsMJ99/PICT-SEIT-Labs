@@ -10080,8 +10080,8 @@ int main(void){
     TRISC=0;
 
 
-    TMR1=0x02;
-    TMR2=0x10;
+    TMR1=0x3A;
+    TMR2=0xAE88;
 
 
 

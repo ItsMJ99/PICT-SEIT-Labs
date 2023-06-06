@@ -2,13 +2,13 @@ __S0 4000 0 ABS 0
 __S1 1CC 0 ABS 0
 __S4 0 0 ABS 0
 __S5 0 0 ABS 0
-_BSR FE0 0 ABS 0
 __Hintentry 0 0 ABS 0
 __Lintentry 0 0 ABS 0
-_TMR0 FD6 0 ABS 0
 _main 3F7C 0 CODE 0
 ___sp 0 0 STACK 2
 start 2 0 CODE 0
+_TRISB F93 0 ABS 0
+_PORTB F81 0 ABS 0
 __Hirdata 0 0 CODE 0
 __Lirdata 0 0 CODE 0
 __HRAM 0 0 ABS 0
@@ -109,6 +109,7 @@ __LcstackBANK1 0 0 ABS 0
 __pcstackBANK1 100 0 BANK1 1
 __Hclrtext 0 0 ABS 0
 __Lclrtext 0 0 ABS 0
+__cntErrataNOP_C:\Users\MADHAV\AppData\Local\Temp\xcAsri0.\driver_tmp_9.o 1 0 ABS 0
 __end_of__initialization 3F76 0 CODE 0
 ___rparam_used 1 0 ABS 0
 __H__absolute__ 0 0 ABS 0
@@ -147,7 +148,6 @@ __Hconst 0 0 CONST 0
 __Lconst 0 0 CONST 0
 __Hspace_4 60000E 0 ABS 0
 __Lspace_4 0 0 ABS 0
-__cntErrataNOP_C:\Users\MADHAV\AppData\Local\Temp\xcAs9vc.\driver_tmp_9.o 1 0 ABS 0
 ___inthi_sp 0 0 STACK 2
 ___intlo_sp 0 0 STACK 2
 __cntErrataNOP_dist/default/production\a2.X.production.o 4 0 ABS 0
@@ -172,7 +172,7 @@ cinit 3F76 3F7B CODE 3F76 0
 text 3F74 3F75 CODE 3F74 0
 %locals
 dist/default/production\a2.X.production.o
-C:\Users\MADHAV\AppData\Local\Temp\xcAs9vc.\driver_tmp_1.s
+C:\Users\MADHAV\AppData\Local\Temp\xcAsri0.\driver_tmp_1.s
 622 3F76 0 CODE 0
 624 3F76 0 CODE 0
 627 3F76 0 CODE 0
@@ -180,13 +180,13 @@ C:\Users\MADHAV\AppData\Local\Temp\xcAs9vc.\driver_tmp_1.s
 635 3F76 0 CODE 0
 636 3F78 0 CODE 0
 a2.c
+9 3F7C 0 CODE 0
 11 3F7C 0 CODE 0
-20 3F7C 0 CODE 0
-23 3F82 0 CODE 0
-24 3F8C 0 CODE 0
-25 3FA8 0 CODE 0
-26 3FC2 0 CODE 0
-30 3FE6 0 CODE 0
-35 3FEA 0 CODE 0
-38 3FF2 0 CODE 0
-42 3FFA 0 CODE 0
+13 3F88 0 CODE 0
+14 3F90 0 CODE 0
+15 3FAC 0 CODE 0
+16 3FC6 0 CODE 0
+17 3FEA 0 CODE 0
+18 3FEE 0 CODE 0
+19 3FF2 0 CODE 0
+20 3FFA 0 CODE 0

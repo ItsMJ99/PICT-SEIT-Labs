@@ -12,8 +12,8 @@ int main(void){
     TRISC=0;
     
     //assigns hex values to timers
-    TMR1=0x02;
-    TMR2=0x10;
+    TMR1=0x3A;
+    TMR2=0xAE88;
     
     /*this variable will decide which if statement to execute,in file registers 
      * it can be set to 1 or 2 */
@@ -33,3 +33,16 @@ int main(void){
     }
     return 0;
 }
+
+/*Hex multiplication
+ 
+        A   5   7   1
+    x           D   8
+    5   2   B   8   8
+8   6   6   B   D   X 
+perform the multiplication of each if value is >15 then subtract 16xN less than each multiplication 
+then add N as carry to next bits multiplication and then perform the same step,after that at 
+final perform addition of answer columns to get final answer*/
+
+/*Hex division
+ form a table of divisor then based on the table use values and find the quotient and remainder*/

@@ -766,41 +766,35 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f458.h: 16760: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
 [v $root$_main `(v ~T0 @X0 0 e ]
-"4 a1.c
-[; ;a1.c: 4: int main(){
+"7 a1.c
+[; ;a1.c: 7: int main(){
 [v _main `(i ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"5
-[; ;a1.c: 5:     TMR0=0xff;
-[e = _TMR0 -> -> 255 `i `us ]
-"6
-[; ;a1.c: 6:     TMR1=0x05;
-[e = _TMR1 -> -> 5 `i `us ]
-"7
-[; ;a1.c: 7:     TRISB=0;
-[e = _TRISB -> -> 0 `i `uc ]
 "8
-[; ;a1.c: 8:     PORTB=TMR0+TMR1;
-[e = _PORTB -> + -> _TMR0 `ui -> _TMR1 `ui `uc ]
+[; ;a1.c: 8:     TMR0=0xA7;
+[e = _TMR0 -> -> 167 `i `us ]
+"9
+[; ;a1.c: 9:     TMR1=0x3F;
+[e = _TMR1 -> -> 63 `i `us ]
 "10
-[; ;a1.c: 10:     TMR0=0x0A;
-[e = _TMR0 -> -> 10 `i `us ]
+[; ;a1.c: 10:     TRISB=0;
+[e = _TRISB -> -> 0 `i `uc ]
 "11
-[; ;a1.c: 11:     TMR1=0x05;
-[e = _TMR1 -> -> 5 `i `us ]
-"12
-[; ;a1.c: 12:     TRISC=0;
-[e = _TRISC -> -> 0 `i `uc ]
+[; ;a1.c: 11:     PORTB=TMR0+TMR1;
+[e = _PORTB -> + -> _TMR0 `ui -> _TMR1 `ui `uc ]
 "13
-[; ;a1.c: 13:     PORTC=TMR0-TMR1;
-[e = _PORTC -> - -> _TMR0 `ui -> _TMR1 `ui `uc ]
+[; ;a1.c: 13:     TRISC=0;
+[e = _TRISC -> -> 0 `i `uc ]
 "14
-[; ;a1.c: 14:     return 0;
+[; ;a1.c: 14:     PORTC=TMR0-TMR1;
+[e = _PORTC -> - -> _TMR0 `ui -> _TMR1 `ui `uc ]
+"15
+[; ;a1.c: 15:     return 0;
 [e ) -> 0 `i ]
 [e $UE 579  ]
-"15
-[; ;a1.c: 15: }
+"16
+[; ;a1.c: 16: }
 [e :UE 579 ]
 }

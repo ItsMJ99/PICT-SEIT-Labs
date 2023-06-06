@@ -10074,37 +10074,15 @@ unsigned char __t3rd16on(void);
 
 
 
-
-
 int main(void){
-
-
     int arr[100];
-
-    int sum;
-
-
-
-    BSR=0x00;
-
+    int sum=0;
 
     for(int i=0;i<100;i++){
         arr[i]=1;
         sum+=arr[i];
     }
-
-
-
-    BSR=0x01;
-
-
-
-
-    TMR0=sum;
-
-
+    TRISB=0;
+    PORTB=sum;
     sum=100;
-
-
-    return 0;
 }

@@ -3,9 +3,9 @@
 [d edition pro ]
 [d chip 18F4550 ]
 [d frameptr 4065 ]
-"4 E:\MJ\COLLEGE\PICT\PICT SEIT Labs\PSDL\a4.X\a4.c
-[v _Delay Delay `(v  1 e 1 0 ]
-"16
+"38 E:\MJ\COLLEGE\PICT\PICT SEIT Labs\PSDL\a4.X\a4.c
+[v _delay delay `(v  1 e 1 0 ]
+"48
 [v _main main `(i  1 e 2 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.41\pic\sources\c99\common\fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
@@ -78,13 +78,13 @@
 ]
 [u S74 . 1 `S52 1 . 1 0 `S61 1 . 1 0 `S70 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES74  1 e 1 @4082 ]
-"16 E:\MJ\COLLEGE\PICT\PICT SEIT Labs\PSDL\a4.X\a4.c
+"48 E:\MJ\COLLEGE\PICT\PICT SEIT Labs\PSDL\a4.X\a4.c
 [v _main main `(i  1 e 2 0 ]
 {
-"24
+"56
 } 0
-"4
-[v _Delay Delay `(v  1 e 1 0 ]
+"38
+[v _delay delay `(v  1 e 1 0 ]
 {
-"14
+"46
 } 0

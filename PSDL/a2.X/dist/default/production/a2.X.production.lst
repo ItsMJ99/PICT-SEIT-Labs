@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.41 build 20230208172133 
-                                                                                               Mon Jun 05 23:42:13 2023
+                                                                                               Tue Jun 06 15:00:10 2023
 
 Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1 
      1                           	processor	18F458
@@ -60,8 +60,8 @@ Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1
     46                           ; Code-generator required, PIC18F458 Definitions
     47                           ; 
     48                           ; SFR Addresses
-    49   000000                     _TMR0	set	4054
-    50   000000                     _BSR	set	4064
+    49   000000                     _PORTB	set	3969
+    50   000000                     _TRISB	set	3987
     51                           
     52                           ; #config settings
     53                           
@@ -108,7 +108,7 @@ Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1
     94 ;;
     95 ;; *************** function _main *****************
     96 ;; Defined at:
-    97 ;;		line 11 in file "a2.c"
+    97 ;;		line 9 in file "a2.c"
     98 ;; Parameters:    Size  Location     Type
     99 ;;		None
    100 ;; Auto vars:     Size  Location     Type
@@ -143,289 +143,290 @@ Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1
    129                           	callstack 31
    130   003F7C  FFFF               	dw	65535	; assembler added errata NOP
    131                           
-   132                           ;a2.c: 14:     int arr[100];;a2.c: 16:     int sum;;a2.c: 20:     BSR=0x00;
+   132                           ;a2.c: 10:     int arr[100];;a2.c: 11:     int sum=0;
    133   003F7E  0E00               	movlw	0
-   134   003F80  6EE0               	movwf	224,c	;volatile
-   135                           
-   136                           ;a2.c: 23:     for(int i=0;i<100;i++){
-   137   003F82  0E00               	movlw	0
-   138   003F84  0101               	movlb	1	; () banked
-   139   003F86  6FCB               	movwf	(main@i+1)& (0+255),b
+   134   003F80  0101               	movlb	1	; () banked
+   135   003F82  6FC9               	movwf	(main@sum+1)& (0+255),b
+   136   003F84  0E00               	movlw	0
+   137   003F86  6FC8               	movwf	main@sum& (0+255),b
+   138                           
+   139                           ;a2.c: 13:     for(int i=0;i<100;i++){
    140   003F88  0E00               	movlw	0
-   141   003F8A  6FCA               	movwf	main@i& (0+255),b
-   142   003F8C                     l711:
-   143   003F8C  FFFF               	dw	65535	; assembler added errata NOP
-   144                           
-   145                           ; BSR set to: 1
-   146                           ;a2.c: 24:         arr[i]=1;
-   147   003F8E  90D8               	bcf	status,0,c
-   148   003F90  35CA               	rlcf	main@i& (0+255),w,b
-   149   003F92  6ED9               	movwf	fsr2l,c
-   150   003F94  35CB               	rlcf	(main@i+1)& (0+255),w,b
-   151   003F96  6EDA               	movwf	fsr2h,c
-   152   003F98  0E00               	movlw	low main@arr
-   153   003F9A  26D9               	addwf	fsr2l,f,c
-   154   003F9C  0E01               	movlw	high main@arr
-   155   003F9E  22DA               	addwfc	fsr2h,f,c
-   156   003FA0  0E01               	movlw	1
-   157   003FA2  6EDE               	movwf	postinc2,c
-   158   003FA4  0E00               	movlw	0
-   159   003FA6  6EDD               	movwf	postdec2,c
-   160                           
-   161                           ;a2.c: 25:         sum+=arr[i];
-   162   003FA8  90D8               	bcf	status,0,c
-   163   003FAA  35CA               	rlcf	main@i& (0+255),w,b
-   164   003FAC  6ED9               	movwf	fsr2l,c
-   165   003FAE  35CB               	rlcf	(main@i+1)& (0+255),w,b
-   166   003FB0  6EDA               	movwf	fsr2h,c
-   167   003FB2  0E00               	movlw	low main@arr
-   168   003FB4  26D9               	addwf	fsr2l,f,c
-   169   003FB6  0E01               	movlw	high main@arr
-   170   003FB8  22DA               	addwfc	fsr2h,f,c
-   171   003FBA  50DE               	movf	postinc2,w,c
-   172   003FBC  27C8               	addwf	main@sum& (0+255),f,b
-   173   003FBE  50DD               	movf	postdec2,w,c
-   174   003FC0  23C9               	addwfc	(main@sum+1)& (0+255),f,b
-   175   003FC2                     
-   176                           ; BSR set to: 1
-   177                           ;a2.c: 26:     }
-   178   003FC2  4BCA               	infsnz	main@i& (0+255),f,b
-   179   003FC4  2BCB               	incf	(main@i+1)& (0+255),f,b
-   180   003FC6                     
-   181                           ; BSR set to: 1
-   182   003FC6  BFCB               	btfsc	(main@i+1)& (0+255),7,b
-   183   003FC8  EFEF  F01F         	goto	u21
-   184   003FCC  51CB               	movf	(main@i+1)& (0+255),w,b
-   185   003FCE  E10A               	bnz	u20
-   186   003FD0  0E64               	movlw	100
-   187   003FD2  5DCA               	subwf	main@i& (0+255),w,b
-   188   003FD4  A0D8               	btfss	status,0,c
-   189   003FD6  EFEF  F01F         	goto	u21
-   190   003FDA  EFF2  F01F         	goto	u20
-   191   003FDE                     u21:
-   192   003FDE  FFFF               	dw	65535	; assembler added errata NOP
-   193   003FE0  EFC6  F01F         	goto	l711
-   194   003FE4                     u20:
-   195   003FE4  FFFF               	dw	65535	; assembler added errata NOP
-   196   003FE6                     
-   197                           ; BSR set to: 1
-   198                           ;a2.c: 30:     BSR=0x01;
-   199   003FE6  0E01               	movlw	1
-   200   003FE8  6EE0               	movwf	224,c	;volatile
-   201   003FEA                     
-   202                           ; BSR set to: 1
-   203                           ;a2.c: 35:     TMR0=sum;
-   204   003FEA  C1C8  FFD6         	movff	main@sum,4054	;volatile
-   205   003FEE  C1C9  FFD7         	movff	main@sum+1,4055	;volatile
-   206                           
-   207                           ;a2.c: 38:     sum=100;
-   208   003FF2  0E00               	movlw	0
-   209   003FF4  6FC9               	movwf	(main@sum+1)& (0+255),b
-   210   003FF6  0E64               	movlw	100
-   211   003FF8  6FC8               	movwf	main@sum& (0+255),b
-   212   003FFA                     
-   213                           ; BSR set to: 1
-   214   003FFA  EF01  F000         	goto	start
-   215   003FFE                     __end_of_main:
-   216                           	callstack 0
-   217   003FFE  FFFF               	dw	65535	; assembler added errata NOP
-   218                           
-   219                           	psect	rparam
-   220   000000                     
-   221                           	psect	idloc
-   222                           
-   223                           ;Config register IDLOC0 @ 0x200000
-   224                           ;	unspecified, using default values
-   225   200000                     	org	2097152
-   226   200000  FF                 	db	255
-   227                           
-   228                           ;Config register IDLOC1 @ 0x200001
-   229                           ;	unspecified, using default values
-   230   200001                     	org	2097153
-   231   200001  FF                 	db	255
-   232                           
-   233                           ;Config register IDLOC2 @ 0x200002
-   234                           ;	unspecified, using default values
-   235   200002                     	org	2097154
-   236   200002  FF                 	db	255
-   237                           
-   238                           ;Config register IDLOC3 @ 0x200003
-   239                           ;	unspecified, using default values
-   240   200003                     	org	2097155
-   241   200003  FF                 	db	255
-   242                           
-   243                           ;Config register IDLOC4 @ 0x200004
-   244                           ;	unspecified, using default values
-   245   200004                     	org	2097156
-   246   200004  FF                 	db	255
-   247                           
-   248                           ;Config register IDLOC5 @ 0x200005
-   249                           ;	unspecified, using default values
-   250   200005                     	org	2097157
-   251   200005  FF                 	db	255
-   252                           
-   253                           ;Config register IDLOC6 @ 0x200006
-   254                           ;	unspecified, using default values
-   255   200006                     	org	2097158
-   256   200006  FF                 	db	255
-   257                           
-   258                           ;Config register IDLOC7 @ 0x200007
-   259                           ;	unspecified, using default values
-   260   200007                     	org	2097159
-   261   200007  FF                 	db	255
-   262                           
-   263                           	psect	config
-   264                           
-   265                           ; Padding undefined space
-   266   300000                     	org	3145728
-   267   300000  FF                 	db	255
-   268                           
-   269                           ;Config register CONFIG1H @ 0x300001
-   270                           ;	unspecified, using default values
-   271                           ;	Oscillator Selection bits
-   272                           ;	OSC = 0x7, unprogrammed default
-   273                           ;	Oscillator System Clock Switch Enable bit
-   274                           ;	OSCS = 0x1, unprogrammed default
-   275   300001                     	org	3145729
-   276   300001  27                 	db	39
-   277                           
-   278                           ;Config register CONFIG2L @ 0x300002
-   279                           ;	unspecified, using default values
-   280                           ;	Power-up Timer Enable bit
-   281                           ;	PWRT = 0x1, unprogrammed default
-   282                           ;	Brown-out Reset Enable bit
-   283                           ;	BOR = 0x1, unprogrammed default
-   284                           ;	Brown-out Reset Voltage bits
-   285                           ;	BORV = 0x3, unprogrammed default
-   286   300002                     	org	3145730
-   287   300002  0F                 	db	15
-   288                           
-   289                           ;Config register CONFIG2H @ 0x300003
-   290                           ;	unspecified, using default values
-   291                           ;	Watchdog Timer Enable bit
-   292                           ;	WDT = 0x1, unprogrammed default
-   293                           ;	Watchdog Timer Postscale Select bits
-   294                           ;	WDTPS = 0x7, unprogrammed default
-   295   300003                     	org	3145731
-   296   300003  0F                 	db	15
-   297                           
-   298                           ;Config register CONFIG4L @ 0x300006
-   299                           ;	unspecified, using default values
-   300                           ;	Stack Full/Underflow Reset Enable bit
-   301                           ;	STVR = 0x1, unprogrammed default
-   302                           ;	Low-Voltage ICSP Enable bit
-   303                           ;	LVP = 0x1, unprogrammed default
-   304                           ;	Background Debugger Enable bit
-   305                           ;	DEBUG = 0x1, unprogrammed default
-   306   300006                     	org	3145734
-   307   300006  85                 	db	133
-   308                           
-   309                           ; Padding undefined space
-   310   300007                     	org	3145735
-   311   300007  FF                 	db	255
-   312                           
-   313                           ;Config register CONFIG5L @ 0x300008
-   314                           ;	unspecified, using default values
-   315                           ;	Code Protection bit
-   316                           ;	CP0 = 0x1, unprogrammed default
-   317                           ;	Code Protection bit
-   318                           ;	CP1 = 0x1, unprogrammed default
-   319                           ;	Code Protection bit
-   320                           ;	CP2 = 0x1, unprogrammed default
-   321                           ;	Code Protection bit
-   322                           ;	CP3 = 0x1, unprogrammed default
-   323   300008                     	org	3145736
-   324   300008  0F                 	db	15
-   325                           
-   326                           ;Config register CONFIG5H @ 0x300009
-   327                           ;	unspecified, using default values
-   328                           ;	Boot Block Code Protection bit
-   329                           ;	CPB = 0x1, unprogrammed default
-   330                           ;	Data EEPROM Code Protection bit
-   331                           ;	CPD = 0x1, unprogrammed default
-   332   300009                     	org	3145737
-   333   300009  C0                 	db	192
-   334                           
-   335                           ;Config register CONFIG6L @ 0x30000A
-   336                           ;	unspecified, using default values
-   337                           ;	Write Protection bit
-   338                           ;	WRT0 = 0x1, unprogrammed default
-   339                           ;	Write Protection bit
-   340                           ;	WRT1 = 0x1, unprogrammed default
-   341                           ;	Write Protection bit
-   342                           ;	WRT2 = 0x1, unprogrammed default
-   343                           ;	Write Protection bit
-   344                           ;	WRT3 = 0x1, unprogrammed default
-   345   30000A                     	org	3145738
-   346   30000A  0F                 	db	15
-   347                           
-   348                           ;Config register CONFIG6H @ 0x30000B
-   349                           ;	unspecified, using default values
-   350                           ;	Configuration Register Write Protection bit
-   351                           ;	WRTC = 0x1, unprogrammed default
-   352                           ;	Boot Block Write Protection bit
-   353                           ;	WRTB = 0x1, unprogrammed default
-   354                           ;	Data EEPROM Write Protection bit
-   355                           ;	WRTD = 0x1, unprogrammed default
-   356   30000B                     	org	3145739
-   357   30000B  E0                 	db	224
-   358                           
-   359                           ;Config register CONFIG7L @ 0x30000C
-   360                           ;	unspecified, using default values
-   361                           ;	Table Read Protection bit
-   362                           ;	EBTR0 = 0x1, unprogrammed default
-   363                           ;	Table Read Protection bit
-   364                           ;	EBTR1 = 0x1, unprogrammed default
-   365                           ;	Table Read Protection bit
-   366                           ;	EBTR2 = 0x1, unprogrammed default
-   367                           ;	Table Read Protection bit
-   368                           ;	EBTR3 = 0x1, unprogrammed default
-   369   30000C                     	org	3145740
-   370   30000C  0F                 	db	15
-   371                           
-   372                           ;Config register CONFIG7H @ 0x30000D
-   373                           ;	unspecified, using default values
-   374                           ;	Boot Block Table Read Protection bit
-   375                           ;	EBTRB = 0x1, unprogrammed default
-   376   30000D                     	org	3145741
-   377   30000D  40                 	db	64
-   378                           tosu	equ	0xFFF
-   379                           tosh	equ	0xFFE
-   380                           tosl	equ	0xFFD
-   381                           stkptr	equ	0xFFC
-   382                           pclatu	equ	0xFFB
-   383                           pclath	equ	0xFFA
-   384                           pcl	equ	0xFF9
-   385                           tblptru	equ	0xFF8
-   386                           tblptrh	equ	0xFF7
-   387                           tblptrl	equ	0xFF6
-   388                           tablat	equ	0xFF5
-   389                           prodh	equ	0xFF4
-   390                           prodl	equ	0xFF3
-   391                           indf0	equ	0xFEF
-   392                           postinc0	equ	0xFEE
-   393                           postdec0	equ	0xFED
-   394                           preinc0	equ	0xFEC
-   395                           plusw0	equ	0xFEB
-   396                           fsr0h	equ	0xFEA
-   397                           fsr0l	equ	0xFE9
-   398                           wreg	equ	0xFE8
-   399                           indf1	equ	0xFE7
-   400                           postinc1	equ	0xFE6
-   401                           postdec1	equ	0xFE5
-   402                           preinc1	equ	0xFE4
-   403                           plusw1	equ	0xFE3
-   404                           fsr1h	equ	0xFE2
-   405                           fsr1l	equ	0xFE1
-   406                           bsr	equ	0xFE0
-   407                           indf2	equ	0xFDF
-   408                           postinc2	equ	0xFDE
-   409                           postdec2	equ	0xFDD
-   410                           preinc2	equ	0xFDC
-   411                           plusw2	equ	0xFDB
-   412                           fsr2h	equ	0xFDA
-   413                           fsr2l	equ	0xFD9
-   414                           status	equ	0xFD8
+   141   003F8A  6FCB               	movwf	(main@i+1)& (0+255),b
+   142   003F8C  0E00               	movlw	0
+   143   003F8E  6FCA               	movwf	main@i& (0+255),b
+   144   003F90                     l709:
+   145   003F90  FFFF               	dw	65535	; assembler added errata NOP
+   146                           
+   147                           ; BSR set to: 1
+   148                           ;a2.c: 14:         arr[i]=1;
+   149   003F92  90D8               	bcf	status,0,c
+   150   003F94  35CA               	rlcf	main@i& (0+255),w,b
+   151   003F96  6ED9               	movwf	fsr2l,c
+   152   003F98  35CB               	rlcf	(main@i+1)& (0+255),w,b
+   153   003F9A  6EDA               	movwf	fsr2h,c
+   154   003F9C  0E00               	movlw	low main@arr
+   155   003F9E  26D9               	addwf	fsr2l,f,c
+   156   003FA0  0E01               	movlw	high main@arr
+   157   003FA2  22DA               	addwfc	fsr2h,f,c
+   158   003FA4  0E01               	movlw	1
+   159   003FA6  6EDE               	movwf	postinc2,c
+   160   003FA8  0E00               	movlw	0
+   161   003FAA  6EDD               	movwf	postdec2,c
+   162                           
+   163                           ;a2.c: 15:         sum+=arr[i];
+   164   003FAC  90D8               	bcf	status,0,c
+   165   003FAE  35CA               	rlcf	main@i& (0+255),w,b
+   166   003FB0  6ED9               	movwf	fsr2l,c
+   167   003FB2  35CB               	rlcf	(main@i+1)& (0+255),w,b
+   168   003FB4  6EDA               	movwf	fsr2h,c
+   169   003FB6  0E00               	movlw	low main@arr
+   170   003FB8  26D9               	addwf	fsr2l,f,c
+   171   003FBA  0E01               	movlw	high main@arr
+   172   003FBC  22DA               	addwfc	fsr2h,f,c
+   173   003FBE  50DE               	movf	postinc2,w,c
+   174   003FC0  27C8               	addwf	main@sum& (0+255),f,b
+   175   003FC2  50DD               	movf	postdec2,w,c
+   176   003FC4  23C9               	addwfc	(main@sum+1)& (0+255),f,b
+   177   003FC6                     
+   178                           ; BSR set to: 1
+   179                           ;a2.c: 16:     }
+   180   003FC6  4BCA               	infsnz	main@i& (0+255),f,b
+   181   003FC8  2BCB               	incf	(main@i+1)& (0+255),f,b
+   182   003FCA                     
+   183                           ; BSR set to: 1
+   184   003FCA  BFCB               	btfsc	(main@i+1)& (0+255),7,b
+   185   003FCC  EFF1  F01F         	goto	u21
+   186   003FD0  51CB               	movf	(main@i+1)& (0+255),w,b
+   187   003FD2  E10A               	bnz	u20
+   188   003FD4  0E64               	movlw	100
+   189   003FD6  5DCA               	subwf	main@i& (0+255),w,b
+   190   003FD8  A0D8               	btfss	status,0,c
+   191   003FDA  EFF1  F01F         	goto	u21
+   192   003FDE  EFF4  F01F         	goto	u20
+   193   003FE2                     u21:
+   194   003FE2  FFFF               	dw	65535	; assembler added errata NOP
+   195   003FE4  EFC8  F01F         	goto	l709
+   196   003FE8                     u20:
+   197   003FE8  FFFF               	dw	65535	; assembler added errata NOP
+   198   003FEA                     
+   199                           ; BSR set to: 1
+   200                           ;a2.c: 17:     TRISB=0;
+   201   003FEA  0E00               	movlw	0
+   202   003FEC  6E93               	movwf	147,c	;volatile
+   203   003FEE                     
+   204                           ; BSR set to: 1
+   205                           ;a2.c: 18:     PORTB=sum;
+   206   003FEE  C1C8  FF81         	movff	main@sum,3969	;volatile
+   207                           
+   208                           ;a2.c: 19:     sum=100;
+   209   003FF2  0E00               	movlw	0
+   210   003FF4  6FC9               	movwf	(main@sum+1)& (0+255),b
+   211   003FF6  0E64               	movlw	100
+   212   003FF8  6FC8               	movwf	main@sum& (0+255),b
+   213   003FFA                     
+   214                           ; BSR set to: 1
+   215   003FFA  EF01  F000         	goto	start
+   216   003FFE                     __end_of_main:
+   217                           	callstack 0
+   218   003FFE  FFFF               	dw	65535	; assembler added errata NOP
+   219                           
+   220                           	psect	rparam
+   221   000000                     
+   222                           	psect	idloc
+   223                           
+   224                           ;Config register IDLOC0 @ 0x200000
+   225                           ;	unspecified, using default values
+   226   200000                     	org	2097152
+   227   200000  FF                 	db	255
+   228                           
+   229                           ;Config register IDLOC1 @ 0x200001
+   230                           ;	unspecified, using default values
+   231   200001                     	org	2097153
+   232   200001  FF                 	db	255
+   233                           
+   234                           ;Config register IDLOC2 @ 0x200002
+   235                           ;	unspecified, using default values
+   236   200002                     	org	2097154
+   237   200002  FF                 	db	255
+   238                           
+   239                           ;Config register IDLOC3 @ 0x200003
+   240                           ;	unspecified, using default values
+   241   200003                     	org	2097155
+   242   200003  FF                 	db	255
+   243                           
+   244                           ;Config register IDLOC4 @ 0x200004
+   245                           ;	unspecified, using default values
+   246   200004                     	org	2097156
+   247   200004  FF                 	db	255
+   248                           
+   249                           ;Config register IDLOC5 @ 0x200005
+   250                           ;	unspecified, using default values
+   251   200005                     	org	2097157
+   252   200005  FF                 	db	255
+   253                           
+   254                           ;Config register IDLOC6 @ 0x200006
+   255                           ;	unspecified, using default values
+   256   200006                     	org	2097158
+   257   200006  FF                 	db	255
+   258                           
+   259                           ;Config register IDLOC7 @ 0x200007
+   260                           ;	unspecified, using default values
+   261   200007                     	org	2097159
+   262   200007  FF                 	db	255
+   263                           
+   264                           	psect	config
+   265                           
+   266                           ; Padding undefined space
+   267   300000                     	org	3145728
+   268   300000  FF                 	db	255
+   269                           
+   270                           ;Config register CONFIG1H @ 0x300001
+   271                           ;	unspecified, using default values
+   272                           ;	Oscillator Selection bits
+   273                           ;	OSC = 0x7, unprogrammed default
+   274                           ;	Oscillator System Clock Switch Enable bit
+   275                           ;	OSCS = 0x1, unprogrammed default
+   276   300001                     	org	3145729
+   277   300001  27                 	db	39
+   278                           
+   279                           ;Config register CONFIG2L @ 0x300002
+   280                           ;	unspecified, using default values
+   281                           ;	Power-up Timer Enable bit
+   282                           ;	PWRT = 0x1, unprogrammed default
+   283                           ;	Brown-out Reset Enable bit
+   284                           ;	BOR = 0x1, unprogrammed default
+   285                           ;	Brown-out Reset Voltage bits
+   286                           ;	BORV = 0x3, unprogrammed default
+   287   300002                     	org	3145730
+   288   300002  0F                 	db	15
+   289                           
+   290                           ;Config register CONFIG2H @ 0x300003
+   291                           ;	unspecified, using default values
+   292                           ;	Watchdog Timer Enable bit
+   293                           ;	WDT = 0x1, unprogrammed default
+   294                           ;	Watchdog Timer Postscale Select bits
+   295                           ;	WDTPS = 0x7, unprogrammed default
+   296   300003                     	org	3145731
+   297   300003  0F                 	db	15
+   298                           
+   299                           ;Config register CONFIG4L @ 0x300006
+   300                           ;	unspecified, using default values
+   301                           ;	Stack Full/Underflow Reset Enable bit
+   302                           ;	STVR = 0x1, unprogrammed default
+   303                           ;	Low-Voltage ICSP Enable bit
+   304                           ;	LVP = 0x1, unprogrammed default
+   305                           ;	Background Debugger Enable bit
+   306                           ;	DEBUG = 0x1, unprogrammed default
+   307   300006                     	org	3145734
+   308   300006  85                 	db	133
+   309                           
+   310                           ; Padding undefined space
+   311   300007                     	org	3145735
+   312   300007  FF                 	db	255
+   313                           
+   314                           ;Config register CONFIG5L @ 0x300008
+   315                           ;	unspecified, using default values
+   316                           ;	Code Protection bit
+   317                           ;	CP0 = 0x1, unprogrammed default
+   318                           ;	Code Protection bit
+   319                           ;	CP1 = 0x1, unprogrammed default
+   320                           ;	Code Protection bit
+   321                           ;	CP2 = 0x1, unprogrammed default
+   322                           ;	Code Protection bit
+   323                           ;	CP3 = 0x1, unprogrammed default
+   324   300008                     	org	3145736
+   325   300008  0F                 	db	15
+   326                           
+   327                           ;Config register CONFIG5H @ 0x300009
+   328                           ;	unspecified, using default values
+   329                           ;	Boot Block Code Protection bit
+   330                           ;	CPB = 0x1, unprogrammed default
+   331                           ;	Data EEPROM Code Protection bit
+   332                           ;	CPD = 0x1, unprogrammed default
+   333   300009                     	org	3145737
+   334   300009  C0                 	db	192
+   335                           
+   336                           ;Config register CONFIG6L @ 0x30000A
+   337                           ;	unspecified, using default values
+   338                           ;	Write Protection bit
+   339                           ;	WRT0 = 0x1, unprogrammed default
+   340                           ;	Write Protection bit
+   341                           ;	WRT1 = 0x1, unprogrammed default
+   342                           ;	Write Protection bit
+   343                           ;	WRT2 = 0x1, unprogrammed default
+   344                           ;	Write Protection bit
+   345                           ;	WRT3 = 0x1, unprogrammed default
+   346   30000A                     	org	3145738
+   347   30000A  0F                 	db	15
+   348                           
+   349                           ;Config register CONFIG6H @ 0x30000B
+   350                           ;	unspecified, using default values
+   351                           ;	Configuration Register Write Protection bit
+   352                           ;	WRTC = 0x1, unprogrammed default
+   353                           ;	Boot Block Write Protection bit
+   354                           ;	WRTB = 0x1, unprogrammed default
+   355                           ;	Data EEPROM Write Protection bit
+   356                           ;	WRTD = 0x1, unprogrammed default
+   357   30000B                     	org	3145739
+   358   30000B  E0                 	db	224
+   359                           
+   360                           ;Config register CONFIG7L @ 0x30000C
+   361                           ;	unspecified, using default values
+   362                           ;	Table Read Protection bit
+   363                           ;	EBTR0 = 0x1, unprogrammed default
+   364                           ;	Table Read Protection bit
+   365                           ;	EBTR1 = 0x1, unprogrammed default
+   366                           ;	Table Read Protection bit
+   367                           ;	EBTR2 = 0x1, unprogrammed default
+   368                           ;	Table Read Protection bit
+   369                           ;	EBTR3 = 0x1, unprogrammed default
+   370   30000C                     	org	3145740
+   371   30000C  0F                 	db	15
+   372                           
+   373                           ;Config register CONFIG7H @ 0x30000D
+   374                           ;	unspecified, using default values
+   375                           ;	Boot Block Table Read Protection bit
+   376                           ;	EBTRB = 0x1, unprogrammed default
+   377   30000D                     	org	3145741
+   378   30000D  40                 	db	64
+   379                           tosu	equ	0xFFF
+   380                           tosh	equ	0xFFE
+   381                           tosl	equ	0xFFD
+   382                           stkptr	equ	0xFFC
+   383                           pclatu	equ	0xFFB
+   384                           pclath	equ	0xFFA
+   385                           pcl	equ	0xFF9
+   386                           tblptru	equ	0xFF8
+   387                           tblptrh	equ	0xFF7
+   388                           tblptrl	equ	0xFF6
+   389                           tablat	equ	0xFF5
+   390                           prodh	equ	0xFF4
+   391                           prodl	equ	0xFF3
+   392                           indf0	equ	0xFEF
+   393                           postinc0	equ	0xFEE
+   394                           postdec0	equ	0xFED
+   395                           preinc0	equ	0xFEC
+   396                           plusw0	equ	0xFEB
+   397                           fsr0h	equ	0xFEA
+   398                           fsr0l	equ	0xFE9
+   399                           wreg	equ	0xFE8
+   400                           indf1	equ	0xFE7
+   401                           postinc1	equ	0xFE6
+   402                           postdec1	equ	0xFE5
+   403                           preinc1	equ	0xFE4
+   404                           plusw1	equ	0xFE3
+   405                           fsr1h	equ	0xFE2
+   406                           fsr1l	equ	0xFE1
+   407                           bsr	equ	0xFE0
+   408                           indf2	equ	0xFDF
+   409                           postinc2	equ	0xFDE
+   410                           postdec2	equ	0xFDD
+   411                           preinc2	equ	0xFDC
+   412                           plusw2	equ	0xFDB
+   413                           fsr2h	equ	0xFDA
+   414                           fsr2l	equ	0xFD9
+   415                           status	equ	0xFD8
 
 Data Sizes:
     Strings     0
@@ -482,7 +483,7 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (0) _main                                               204   204      0     161
+ (0) _main                                               204   204      0     162
                                               0 BANK1    204   204      0
  ---------------------------------------------------------------------------------
  Estimated maximum stack depth 0
@@ -513,9 +514,9 @@ BITBANK4           100      0       0      12        0.0%
 BANK4              100      0       0      13        0.0%
 BITBANK5           100      0       0      14        0.0%
 BANK5              100      0       0      15        0.0%
-BITBIGSFRh          1F      0       0      16        0.0%
-BITBIGSFRlh          8      0       0      17        0.0%
-BITBIGSFRll         D6      0       0      18        0.0%
+BITBIGSFRh          6C      0       0      16        0.0%
+BITBIGSFRlh         11      0       0      17        0.0%
+BITBIGSFRll         81      0       0      18        0.0%
 ABS                  0      0       0      19        0.0%
 BIGRAM             5FF      0       0      20        0.0%
 BIGSFR               0      0       0     200        0.0%
@@ -526,25 +527,25 @@ SFR                  0      0       0     200        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.41 build 20230208172133 
-Symbol Table                                                                                   Mon Jun 05 23:42:13 2023
+Symbol Table                                                                                   Tue Jun 06 15:00:10 2023
 
                                                      l11 3FFA  
-                                                     u20 3FE4  
-                                                     u21 3FDE  
-                                                    l711 3F8C  
-                                                    l713 3FC2  
-                                                    l705 3F7C  
-                                                    l715 3FC6  
-                                                    l717 3FE6  
-                                                    l719 3FEA  
-                                                    _BSR 0FE0  
-                                                   _TMR0 0FD6  
+                                                     u20 3FE8  
+                                                     u21 3FE2  
+                                                    l711 3FC6  
+                                                    l703 3F7C  
+                                                    l713 3FCA  
+                                                    l715 3FEA  
+                                                    l717 3FEE  
+                                                    l709 3F90  
                                                    _main 3F7C  
                                                    fsr2h 0FDA  
                                                    fsr2l 0FD9  
                                                    start 0002  
                                            ___param_bank 0000  
                                                   ?_main 0000  
+                                                  _PORTB 0F81  
+                                                  _TRISB 0F93  
                                                   main@i 01CA  
                                                   status 0FD8  
                                         __initialization 3F76  

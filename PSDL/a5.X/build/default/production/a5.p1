@@ -3,65 +3,46 @@ Version 4.0 HI-TECH Software Intermediate Code
 [t T36 __interrupt ]
 "4475 C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 4475:     struct {
-[s S173 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S173 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF SPPIF ]
+[s S178 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S178 . TMR1IF TMR2IF CCP1IF SSPIF TXIF RCIF ADIF SPPIF ]
 "4485
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 4485:     struct {
-[s S174 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S174 . . TX1IF RC1IF . PSPIF ]
+[s S179 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S179 . . TX1IF RC1IF . PSPIF ]
 "4474
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 4474: typedef union {
-[u S172 `S173 1 `S174 1 ]
-[n S172 . . . ]
+[u S177 `S178 1 `S179 1 ]
+[n S177 . . . ]
 "4493
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 4493: extern volatile PIR1bits_t PIR1bits __attribute__((address(0xF9E)));
-[v _PIR1bits `VS172 ~T0 @X0 0 e@3998 ]
-"8589
-[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 8589:     struct {
-[s S355 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S355 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
-"8599
-[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 8599:     struct {
-[s S356 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S356 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
-"8609
-[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 8609:     struct {
-[s S357 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S357 . . GIEL GIEH ]
-"8588
-[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 8588: typedef union {
-[u S354 `S355 1 `S356 1 `S357 1 ]
-[n S354 . . . . ]
-"8615
-[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 8615: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
-[v _INTCONbits `VS354 ~T0 @X0 0 e@4082 ]
+[v _PIR1bits `VS177 ~T0 @X0 0 e@3998 ]
 "2321
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 2321:     struct {
-[s S96 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S96 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 ]
+[s S101 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S101 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 ]
 "2330
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 2330:     struct {
-[s S97 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S97 . AN0 AN1 AN2 AN3 T0CKI AN4 OSC2 ]
+[s S102 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S102 . AN0 AN1 AN2 AN3 T0CKI AN4 OSC2 ]
 "2339
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 2339:     struct {
-[s S98 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S98 . . VREFM VREFP . LVDIN ]
+[s S103 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S103 . . VREFM VREFP . LVDIN ]
 "2346
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 2346:     struct {
-[s S99 :5 `uc 1 :1 `uc 1 ]
-[n S99 . . HLVDIN ]
+[s S104 :5 `uc 1 :1 `uc 1 ]
+[n S104 . . HLVDIN ]
 "2350
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 2350:     struct {
-[s S100 :1 `uc 1 ]
-[n S100 . ULPWUIN ]
+[s S105 :1 `uc 1 ]
+[n S105 . ULPWUIN ]
 "2320
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 2320: typedef union {
-[u S95 `S96 1 `S97 1 `S98 1 `S99 1 `S100 1 ]
-[n S95 . . . . . . ]
+[u S100 `S101 1 `S102 1 `S103 1 `S104 1 `S105 1 ]
+[n S100 . . . . . . ]
 "2354
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 2354: extern volatile PORTAbits_t PORTAbits __attribute__((address(0xF80)));
-[v _PORTAbits `VS95 ~T0 @X0 0 e@3968 ]
+[v _PORTAbits `VS100 ~T0 @X0 0 e@3968 ]
 "7519
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 7519: extern volatile unsigned short TMR1 __attribute__((address(0xFCE)));
 [v _TMR1 `Vus ~T0 @X0 0 e@4046 ]
@@ -71,57 +52,76 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _T1CON `Vuc ~T0 @X0 0 e@4045 ]
 "3439
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 3439:     struct {
-[s S137 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S137 . TRISA0 TRISA1 TRISA2 TRISA3 TRISA4 TRISA5 TRISA6 ]
+[s S142 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S142 . TRISA0 TRISA1 TRISA2 TRISA3 TRISA4 TRISA5 TRISA6 ]
 "3448
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 3448:     struct {
-[s S138 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S138 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 ]
+[s S143 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S143 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 ]
 "3438
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 3438: typedef union {
-[u S136 `S137 1 `S138 1 ]
-[n S136 . . . ]
+[u S141 `S142 1 `S143 1 ]
+[n S141 . . . ]
 "3458
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 3458: extern volatile TRISAbits_t TRISAbits __attribute__((address(0xF92)));
-[v _TRISAbits `VS136 ~T0 @X0 0 e@3986 ]
+[v _TRISAbits `VS141 ~T0 @X0 0 e@3986 ]
 "4391
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 4391:     struct {
-[s S170 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S170 . TMR1IE TMR2IE CCP1IE SSPIE TXIE RCIE ADIE SPPIE ]
+[s S175 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S175 . TMR1IE TMR2IE CCP1IE SSPIE TXIE RCIE ADIE SPPIE ]
 "4401
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 4401:     struct {
-[s S171 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S171 . . TX1IE RC1IE . PSPIE ]
+[s S176 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S176 . . TX1IE RC1IE . PSPIE ]
 "4390
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 4390: typedef union {
-[u S169 `S170 1 `S171 1 ]
-[n S169 . . . ]
+[u S174 `S175 1 `S176 1 ]
+[n S174 . . . ]
 "4409
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 4409: extern volatile PIE1bits_t PIE1bits __attribute__((address(0xF9D)));
-[v _PIE1bits `VS169 ~T0 @X0 0 e@3997 ]
+[v _PIE1bits `VS174 ~T0 @X0 0 e@3997 ]
+"8589
+[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 8589:     struct {
+[s S360 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S360 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"8599
+[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 8599:     struct {
+[s S361 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S361 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"8609
+[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 8609:     struct {
+[s S362 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S362 . . GIEL GIEH ]
+"8588
+[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 8588: typedef union {
+[u S359 `S360 1 `S361 1 `S362 1 ]
+[n S359 . . . . ]
+"8615
+[; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 8615: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
+[v _INTCONbits `VS359 ~T0 @X0 0 e@4082 ]
 "7422
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 7422:     struct {
-[s S312 :2 `uc 1 :1 `uc 1 ]
-[n S312 . . NOT_T1SYNC ]
+[s S317 :2 `uc 1 :1 `uc 1 ]
+[n S317 . . NOT_T1SYNC ]
 "7426
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 7426:     struct {
-[s S313 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S313 . TMR1ON TMR1CS nT1SYNC T1OSCEN T1CKPS T1RUN RD16 ]
+[s S318 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S318 . TMR1ON TMR1CS nT1SYNC T1OSCEN T1CKPS T1RUN RD16 ]
 "7435
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 7435:     struct {
-[s S314 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S314 . . T1SYNC . T1CKPS0 T1CKPS1 ]
+[s S319 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S319 . . T1SYNC . T1CKPS0 T1CKPS1 ]
 "7442
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 7442:     struct {
-[s S315 :3 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 ]
-[n S315 . . SOSCEN . T1RD16 ]
+[s S320 :3 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 ]
+[n S320 . . SOSCEN . T1RD16 ]
 "7421
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 7421: typedef union {
-[u S311 `S312 1 `S313 1 `S314 1 `S315 1 ]
-[n S311 . . . . . ]
+[u S316 `S317 1 `S318 1 `S319 1 `S320 1 ]
+[n S316 . . . . . ]
 "7449
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 7449: extern volatile T1CONbits_t T1CONbits __attribute__((address(0xFCD)));
-[v _T1CONbits `VS311 ~T0 @X0 0 e@4045 ]
+[v _T1CONbits `VS316 ~T0 @X0 0 e@4045 ]
 "55 C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 55: __asm("SPPDATA equ 0F62h");
 [; <" SPPDATA equ 0F62h ;# ">
@@ -632,131 +632,122 @@ Version 4.0 HI-TECH Software Intermediate Code
 "8894
 [; ;C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 8894: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"4 a5.c
-[; ;a5.c: 4: int count=0;
-[v _count `i ~T0 @X0 1 e ]
-[i _count
--> 0 `i
-]
-"5
-[; ;a5.c: 5: int buzz=0;
+"9 a5.c
+[; ;a5.c: 9: int buzz=0;
 [v _buzz `i ~T0 @X0 1 e ]
 [i _buzz
 -> 0 `i
 ]
-[v $root$_ISR `(v ~T0 @X0 0 e ]
-"7
-[; ;a5.c: 7: void __attribute__((picinterrupt(("")))) ISR(){
-[v _ISR `(v ~T36 @X0 1 ef ]
+"10
+[; ;a5.c: 10: int count=0;
+[v _count `i ~T0 @X0 1 e ]
+[i _count
+-> 0 `i
+]
+[v $root$_buzzbeep `(v ~T0 @X0 0 e ]
+"14
+[; ;a5.c: 14: void __attribute__((picinterrupt(("")))) buzzbeep(){
+[v _buzzbeep `(v ~T36 @X0 1 ef ]
 {
-[e :U _ISR ]
+[e :U _buzzbeep ]
 [f ]
-"8
-[; ;a5.c: 8:     if(PIR1bits.TMR1IF==1){
+"17
+[; ;a5.c: 17:     if(PIR1bits.TMR1IF==1){
 [e $ ! == -> . . _PIR1bits 0 0 `i -> 1 `i 368  ]
 {
-"9
-[; ;a5.c: 9:         INTCONbits.GIE=0;
-[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
-"10
-[; ;a5.c: 10:         count++;
-[e ++ _count -> 1 `i ]
-"11
-[; ;a5.c: 11:         if(buzz && count ==40){
-[e $ ! && != _buzz -> 0 `i == _count -> 40 `i 369  ]
+"19
+[; ;a5.c: 19:         if(buzz&&count==10){
+[e $ ! && != _buzz -> 0 `i == _count -> 10 `i 369  ]
 {
-"12
-[; ;a5.c: 12:             buzz=0;
+"20
+[; ;a5.c: 20:             buzz=0;
 [e = _buzz -> 0 `i ]
-"13
-[; ;a5.c: 13:             PORTAbits.RA5=0;
+"21
+[; ;a5.c: 21:             PORTAbits.RA5=0;
 [e = . . _PORTAbits 0 5 -> -> 0 `i `uc ]
-"14
-[; ;a5.c: 14:             count=0;
+"22
+[; ;a5.c: 22:             count=0;
 [e = _count -> 0 `i ]
-"15
-[; ;a5.c: 15:         }
+"23
+[; ;a5.c: 23:         }
 }
 [e :U 369 ]
-"16
-[; ;a5.c: 16:         if(!buzz && count ==20){
-[e $ ! && ! != _buzz -> 0 `i == _count -> 20 `i 370  ]
+"24
+[; ;a5.c: 24:         if(!buzz&&count==40){
+[e $ ! && ! != _buzz -> 0 `i == _count -> 40 `i 370  ]
 {
-"17
-[; ;a5.c: 17:             buzz=1;
+"25
+[; ;a5.c: 25:             buzz=1;
 [e = _buzz -> 1 `i ]
-"18
-[; ;a5.c: 18:             PORTAbits.RA5=1;
+"26
+[; ;a5.c: 26:             PORTAbits.RA5=1;
 [e = . . _PORTAbits 0 5 -> -> 1 `i `uc ]
-"19
-[; ;a5.c: 19:             count=0;
+"27
+[; ;a5.c: 27:             count=0;
 [e = _count -> 0 `i ]
-"20
-[; ;a5.c: 20:         }
+"28
+[; ;a5.c: 28:         }
 }
 [e :U 370 ]
-"21
-[; ;a5.c: 21:         TMR1=28406;
-[e = _TMR1 -> -> 28406 `i `us ]
-"22
-[; ;a5.c: 22:         PIR1bits.TMR1IF=0;
+"29
+[; ;a5.c: 29:         count++;
+[e ++ _count -> 1 `i ]
+"30
+[; ;a5.c: 30:         PIR1bits.TMR1IF=0;
 [e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
-"23
-[; ;a5.c: 23:         INTCONbits.GIE=1;
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-"24
-[; ;a5.c: 24:     }
+"31
+[; ;a5.c: 31:         TMR1=28038;
+[e = _TMR1 -> -> 28038 `i `us ]
+"33
+[; ;a5.c: 33:     }
 }
 [e :U 368 ]
-"25
-[; ;a5.c: 25: }
+"34
+[; ;a5.c: 34: }
 [e :UE 367 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"27
-[; ;a5.c: 27: int main(void){
+"36
+[; ;a5.c: 36: int main(void){
 [v _main `(i ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"28
-[; ;a5.c: 28:     T1CON=0x30;
-[e = _T1CON -> -> 48 `i `uc ]
-"29
-[; ;a5.c: 29:     TMR1=28406;
-[e = _TMR1 -> -> 28406 `i `us ]
-"31
-[; ;a5.c: 31:     TRISAbits.TRISA5=0;
-[e = . . _TRISAbits 0 5 -> -> 0 `i `uc ]
-"32
-[; ;a5.c: 32:     PORTAbits.RA5=0;
-[e = . . _PORTAbits 0 5 -> -> 0 `i `uc ]
-"33
-[; ;a5.c: 33:     PIE1bits.TMR1IE=1;
-[e = . . _PIE1bits 0 0 -> -> 1 `i `uc ]
-"34
-[; ;a5.c: 34:     PIR1bits.TMR1IF=0;
-[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
-"35
-[; ;a5.c: 35:     INTCONbits.PEIE=1;
-[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-"36
-[; ;a5.c: 36:     INTCONbits.GIE=1;
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
 "37
-[; ;a5.c: 37:     T1CONbits.TMR1ON=1;
-[e = . . _T1CONbits 1 0 -> -> 1 `i `uc ]
+[; ;a5.c: 37:     T1CON=0xB0;
+[e = _T1CON -> -> 176 `i `uc ]
 "38
-[; ;a5.c: 38:     while(1);
+[; ;a5.c: 38:     TRISAbits.TRISA5=0;
+[e = . . _TRISAbits 0 5 -> -> 0 `i `uc ]
+"39
+[; ;a5.c: 39:     PORTAbits.RA5=0;
+[e = . . _PORTAbits 0 5 -> -> 0 `i `uc ]
+"40
+[; ;a5.c: 40:     PIE1bits.TMR1IE=1;
+[e = . . _PIE1bits 0 0 -> -> 1 `i `uc ]
+"41
+[; ;a5.c: 41:     PIR1bits.TMR1IF=0;
+[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
+"42
+[; ;a5.c: 42:     INTCONbits.PEIE=1;
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+"43
+[; ;a5.c: 43:     INTCONbits.GIE=1;
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+"44
+[; ;a5.c: 44:     T1CONbits.TMR1ON=1;
+[e = . . _T1CONbits 1 0 -> -> 1 `i `uc ]
+"45
+[; ;a5.c: 45:     while(1);
 [e :U 373 ]
 [e :U 372 ]
 [e $U 373  ]
 [e :U 374 ]
-"39
-[; ;a5.c: 39:     return 0;
+"46
+[; ;a5.c: 46:     return 0;
 [e ) -> 0 `i ]
 [e $UE 371  ]
-"40
-[; ;a5.c: 40: }
+"47
+[; ;a5.c: 47: }
 [e :UE 371 ]
 }
