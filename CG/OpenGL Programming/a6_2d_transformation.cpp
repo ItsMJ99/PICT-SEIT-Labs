@@ -1,6 +1,6 @@
 #include<GL/glut.h>
-#include<cmath>
 #include<iostream>
+#include<cmath>
 using namespace std;
 
 double xi, yi;
@@ -31,24 +31,21 @@ void draw(double temp[3][3]) {
 void drawLines() {
     glBegin(GL_LINES);
     glColor3f(1, 1, 1);
-    //horizontal
-    glVertex2f(-400, 0);
-    glVertex2f(400, 0);
-
-    //vertical
-    glVertex2f(0, 400);
-    glVertex2f(0, -400);
+    glVertex2d(-400, 0);
+    glVertex2d(400, 0);
+    glVertex2d(0, -400);
+    glVertex2d(0, 400);
     glEnd();
     glFlush();
 }
 
 void translation() {
-    double tx = -50, ty = 20;
+    double tx = -100, ty = 0;
     double temp[3][3] = { 0 };
 
-    // cout << "Enter tx = ";
+    // cout << "Enter tx : ";
     // cin >> tx;
-    // cout << "Enter ty = ";
+    // cout << "Enter ty : ";
     // cin >> ty;
 
     temp[0][0] = 1;
@@ -60,18 +57,17 @@ void translation() {
     glClear(GL_COLOR_BUFFER_BIT);
     drawLines();
     matrix3x3(d, temp);
-    glColor3f(0.0, 0.0, 1.0);
+    glColor3f(0, 1, 0);
     draw(ans);
 }
 
 void scaling() {
-    double sx = 2, sy = 1;
-    double temp[3][3] = { 0 };
+    double sx = 2, sy = 1, temp[3][3] = { 0 };
 
-    // cout << "Enter sx = ";
-    // cin >> sx;
-    // cout << "Enter sy = ";
-    // cin >> sy;
+    // cout << "Enter sx : ";
+   // cin >> sx;
+   // cout << "Enter sy : ";
+   // cin >> sy;
 
     temp[0][0] = sx;
     temp[1][1] = sy;
@@ -80,12 +76,12 @@ void scaling() {
     glClear(GL_COLOR_BUFFER_BIT);
     drawLines();
     matrix3x3(d, temp);
-    glColor3f(0, 0, 1);
+    glColor3f(0, 1, 0);
     draw(ans);
 }
 
 void rotation() {
-    double rx = -100, ry = 0, angle = 45, temp[3][3] = { 0 };
+    double rx = 0, ry = 0, angle = 45, temp[3][3] = { 0 };
     // cout << "Enter arbiratary x point: ";
     // cin >> rx;
     // cout << "Enter arbitratiry y point: ";
@@ -99,50 +95,73 @@ void rotation() {
     temp[0][1] = sin(angle);
     temp[1][0] = -sin(angle);
     temp[1][1] = cos(angle);
-    temp[2][0] = rx - (rx * cos(angle)) + (ry * sin(angle));
-    temp[2][1] = ry - (rx * sin(angle)) - (ry * cos(angle));
+    temp[2][0] = (-(rx * cos(angle)) + (ry * sin(angle)) + rx);
+    temp[2][1] = (-(rx * sin(angle)) - (ry * cos(angle)) + ry);
+    temp[2][2] = 0;
+
+    glClear(GL_COLOR_BUFFER_BIT);
+    drawLines();
+    matrix3x3(d, temp);
+    glColor3f(0, 1, 0);
+    draw(ans);
+}
+
+void xreflection() {
+    double temp[3][3] = { 0 };
+    temp[0][0] = 1;
+    temp[1][1] = -1;
     temp[2][2] = 1;
 
     glClear(GL_COLOR_BUFFER_BIT);
     drawLines();
     matrix3x3(d, temp);
-    glColor3f(0, 0, 1);
+    glColor3f(0, 1, 0);
     draw(ans);
 }
 
-void reflectX() {
-    double temp[3][3] = { {1, 0, 0}, {0, -1, 0}, {0, 0,1} };
+void yreflection() {
+    double temp[3][3] = { 0 };
+    temp[0][0] = -1;
+    temp[1][1] = 1;
+    temp[2][2] = 1;
 
     glClear(GL_COLOR_BUFFER_BIT);
     drawLines();
     matrix3x3(d, temp);
-    glColor3f(0, 0, 1);
+    glColor3f(0, 1, 0);
     draw(ans);
 }
 
-void reflectY() {
-    double temp[3][3] = { {-1, 0, 0}, {0, 1, 0}, {0, 0, 1} };
+void xyreflection() {
+    double temp[3][3] = { 0 };
+    temp[0][1] = 1;
+    temp[1][0] = 1;
+    temp[2][2] = 1;
 
     glClear(GL_COLOR_BUFFER_BIT);
     drawLines();
     matrix3x3(d, temp);
-    glColor3f(0, 0, 1);
+    glColor3f(0, 1, 0);
     draw(ans);
 }
-
-void reflectXY() {
-    double temp[3][3] = { {0, 1, 0}, {1, 0, 0}, {0, 0, 1} };
+void originreflection() {
+    double temp[3][3] = { 0 };
+    temp[0][0] = -1;
+    temp[1][1] = -1;
+    temp[2][2] = 1;
 
     glClear(GL_COLOR_BUFFER_BIT);
     drawLines();
     matrix3x3(d, temp);
-    glColor3f(0, 0, 1);
+    glColor3f(0, 1, 0);
     draw(ans);
 }
-
 
 void xshearing() {
     double shx = 0.5, temp[3][3] = { 0 };
+
+    // cout << "shx : ";
+    // cin >> shx;
 
     temp[0][0] = 1;
     temp[1][1] = 1;
@@ -152,13 +171,15 @@ void xshearing() {
     glClear(GL_COLOR_BUFFER_BIT);
     drawLines();
     matrix3x3(d, temp);
-    glColor3f(0, 0, 1);
+    glColor3f(0, 1, 0);
     draw(ans);
-
 }
 
 void yshearing() {
     double shy = 0.5, temp[3][3] = { 0 };
+
+    // cout << "shx : ";
+    // cin >> shx;
 
     temp[0][0] = 1;
     temp[1][1] = 1;
@@ -168,7 +189,7 @@ void yshearing() {
     glClear(GL_COLOR_BUFFER_BIT);
     drawLines();
     matrix3x3(d, temp);
-    glColor3f(0, 0, 1);
+    glColor3f(0, 1, 0);
     draw(ans);
 }
 
@@ -184,21 +205,29 @@ void menu(GLint c) {
         rotation();
         break;
     case 4:
-        reflectX();
+        xreflection();
         break;
     case 5:
-        reflectY();
+        yreflection();
         break;
     case 6:
-        reflectXY();
+        xyreflection();
         break;
     case 7:
-        xshearing();
+        originreflection();
         break;
     case 8:
+        xshearing();
+        break;
+    case 9:
         yshearing();
         break;
     }
+}
+
+void display() {
+    glColor3f(1, 0, 0);
+    draw(d);
 }
 
 void init() {
@@ -207,24 +236,23 @@ void init() {
     gluOrtho2D(-400, 400, -400, 400);
 }
 
-void display() {
-    glColor3f(0.0, 1.0, 0.0);
-    draw(d);
-}
-
 int main(int argc, char** argv) {
 
-    // cout << "Enter X Cordinate = ";
+    // cout << "Enter x coordinate : ";
     // cin >> xi;
-    // cout << "Enter Y Cordinate = ";
+    // cout << "Enter y coordinate : ";
     // cin >> yi;
-    xi = 50, yi = 50, length = 200;
+    // cout << "Enter length : ";
+    // cin >> length;
 
     for (int i = 0;i < 3;i++) {
-        for (int k = 0;k < 3;k++) {
-            d[i][k] = 1;
+        for (int j = 0;j < 3;j++) {
+            d[i][j] = 1;
         }
     }
+
+    xi = 100, yi = 100;
+    length = 200;
 
     d[0][0] = xi;
     d[0][1] = yi;
@@ -233,25 +261,25 @@ int main(int argc, char** argv) {
     d[2][0] = length / 2 + xi;
     d[2][1] = (sqrt(3) / 2 * length) + yi;
 
-
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE);
     glutInitWindowPosition(800, 200);
     glutInitWindowSize(800, 800);
-    glutCreateWindow("ASSIGNMENT 6 TRANSFORMATION");
+    glutCreateWindow("Assignment 6 Transformation");
     init();
     drawLines();
     glutDisplayFunc(display);
 
     glutCreateMenu(menu);
-    glutAddMenuEntry("TRANSLATION", 1);
-    glutAddMenuEntry("SCALING", 2);
-    glutAddMenuEntry("ROTATION", 3);
-    glutAddMenuEntry("X-REFLECTION", 4);
-    glutAddMenuEntry("Y-REFLECTION", 5);
-    glutAddMenuEntry("X=Y-REFLECTION", 6);
-    glutAddMenuEntry("X-SHEARING", 7);
-    glutAddMenuEntry("Y-SHEARING", 8);
+    glutAddMenuEntry("Translation", 1);
+    glutAddMenuEntry("Scaling", 2);
+    glutAddMenuEntry("Rotation", 3);
+    glutAddMenuEntry("X-Reflection", 4);
+    glutAddMenuEntry("Y-Reflection", 5);
+    glutAddMenuEntry("XY-Reflection", 6);
+    glutAddMenuEntry("Origin-Reflection", 7);
+    glutAddMenuEntry("X-Shearing", 8);
+    glutAddMenuEntry("Y-Shearing", 9);
     glutAttachMenu(GLUT_RIGHT_BUTTON);
     glutMainLoop();
     return 0;

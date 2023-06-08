@@ -1,217 +1,245 @@
-
-#include <stdlib.h>
 #include <bits/stdc++.h>
-
-#ifdef __APPLE__
-#include <GLUT/glut.h>
-#else
 #include <GL/glut.h>
-#endif
 
-#include<math.h>
+
+//  define the application area size
+#define XMAX 600
+#define YMAX 600
 
 using namespace std;
 
-double et[3][3] = { 1 }, ans[3][3] = { 0 };
-float xi, yi;
-int length;
 
-void drawEt(double temp[3][3]) {
-    glLineWidth(3);
-    glBegin(GL_LINE_LOOP);
-    for (int i = 0; i < 3; i++) {
-        glVertex2i(temp[i][0], temp[i][1]);
-    }
-    glEnd();
-    glFlush();
-}
+//  defining the clipping window
+int xl = 200, yl = 200, xh = 400, yh = 400;
+int flag = 0;
+float u1, v1, u2, v2;
 
-void multi3X3(double m1[3][3], double m2[3][3]) {
-
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            int sum = 0;
-            for (int k = 0; k < 3; k++) {
-                sum += m1[i][k] * m2[k][j];
-            }
-            ans[i][j] = sum;
-        }
-    }
-
-}
-
-void translation() {
-    double tx, ty;
-    double temp[3][3] = { 0 };
-    cout << "Enter tx: ";
-    cin >> tx;
-    cout << "Enter ty: ";
-    cin >> ty;
-
-    temp[0][0] = 1;
-    temp[1][1] = 1;
-    temp[2][2] = 1;
-    temp[2][0] = tx;
-    temp[2][1] = ty;
-
-    multi3X3(et, temp);
-    glColor3f(1, 1, 0);
-    drawEt(ans);
-
-}
-
-void scalling() {
-    double sx, sy;
-    double temp[3][3] = { 0 };
-    cout << "ENter sx: ";
-    cin >> sx;
-    cout << "Enter sy: ";
-    cin >> sy;
-
-    temp[0][0] = sx;
-    temp[1][1] = sy;
-    temp[2][2] = 1;
-
-    multi3X3(et, temp);
-    glColor3f(1, 0, 1);
-    drawEt(ans);
-}
-
-void rotation() {
-    double rx, ry, angle, temp[3][3] = { 0 };
-    cout << "Enter arbiratary x point: ";
-    cin >> rx;
-    cout << "Enter arbitratiry y point: ";
-    cin >> ry;
-    cout << "Enter rotation angle: ";
-    cin >> angle;
-
-    angle = angle * (M_PI / 180);
-
-    temp[0][0] = cos(angle);
-    temp[0][1] = sin(angle);
-    temp[1][0] = -sin(angle);
-    temp[1][1] = cos(angle);
-    temp[2][0] = rx - (rx * cos(angle)) + (ry * sin(angle));
-    temp[2][1] = ry - (rx * sin(angle)) - (ry * cos(angle));
-    temp[2][2] = 1;
-
-    multi3X3(et, temp);
-    glColor3f(0, 1, 1);
-    drawEt(ans);
-}
-
-void shearing() {
-    int ch = 0;
-    double shx, shy, temp[3][3] = { 0 };
-
-    cout << "Enter 1 for shx, 2 for shy: ";
-    cin >> ch;
-
-    if (ch == 1) {
-        cout << "Enter shx factor: ";
-        cin >> shx;
-        temp[0][0] = 1;
-        temp[1][1] = 1;
-        temp[2][2] = 1;
-        temp[1][0] = shx;
-    }
-    else {
-        cout << "Enter shy factor: ";
-        cin >> shy;
-        temp[0][0] = 1;
-        temp[1][1] = 1;
-        temp[2][2] = 1;
-        temp[0][1] = shy;
-    }
-
-    multi3X3(et, temp);
-    glColor3f(1, 0, 0);
-    drawEt(ans);
-}
-
-void menu(int item) {
-    switch (item) {
-    case 1:
-        translation();
-        break;
-    case 2:
-        scalling();
-        break;
-    case 3:
-        rotation();
-        break;
-    case 4:
-        shearing();
-        break;
-    default:
-        break;
-    }
-}
-
-void display() {
-    glColor3f(1, 0, 0);
-    glBegin(GL_LINE_LOOP);
-    glVertex2i(-300, 0);
-    glVertex2i(300, 0);
-    glEnd();
-    glBegin(GL_LINE_LOOP);
-    glVertex2i(0, 300);
-    glVertex2i(0, -300);
-    glEnd();
-    glFlush();
-
-    glColor3f(0, 0, 1);
-    drawEt(et);
-}
-
-void init() {
-    glClearColor(1, 1, 1, 0);
+void initialize(void)
+{
+    glClearColor(1.0, 1.0, 1.0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT);
-    gluOrtho2D(-300, 300, -300, 300);
+    glColor3f(0, 0, 0);
 }
 
-int main(int argc, char** argv) {
+//  structue for storing the region code
+struct code
+{
+    int t, b, r, l;
+};
 
-    cout << "Enter x coordinate: ";
-    cin >> xi;
-    cout << "Enter y coordinate: ";
-    cin >> yi;
-    cout << "Enter line length: ";
-    cin >> length;
 
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            et[i][j] = 1;
+//  getting the region code of the given co-ordinates
+code getCode(int x, int y)
+{
+    code c = { 0, 0, 0, 0 };
+
+    if (x < xl)
+        c.l = 1;
+
+    if (x > xh)
+        c.r = 1;
+
+    if (y < yl)
+        c.b = 1;
+
+    if (y > yh)
+        c.t = 1;
+
+    return c;
+}
+
+void displayPoint(float x, float y)
+{
+    glBegin(GL_POINTS);
+    glVertex2f(x, y);
+    glEnd();
+}
+
+void simpleLine(int x1, int y1, int x2, int y2)
+{
+    float x, y, dx, dy, step, Xin, Yin;
+
+    dx = x2 - x1;
+    dy = y2 - y1;
+
+    step = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
+    Xin = dx / step;
+    Yin = dy / step;
+
+    x = x1;
+    y = y1;
+
+    displayPoint(x, y);
+    for (int i = 0; i <= step; i++)
+    {
+        x += Xin;
+        y += Yin;
+        displayPoint(x, y);
+    }
+    glFlush();
+}
+
+
+//  drawing the window
+void draw_window()
+{
+    glColor3f(0, 0, 0);
+    simpleLine(xl, yl, xh, yl);
+    simpleLine(xh, yl, xh, yh);
+    simpleLine(xh, yh, xl, yh);
+    simpleLine(xl, yh, xl, yl);
+    glFlush();
+}
+
+void mouseListener(int button, int state, int x, int y)
+{
+    glColor3f(0, 0, 0);
+    if (state == GLUT_DOWN && flag == 0)
+    {
+        u1 = x;
+        v1 = YMAX - y;
+        flag = 1;
+    }
+    else if (state == GLUT_DOWN && flag == 1)
+    {
+        u2 = x;
+        v2 = YMAX - y;
+        flag = 2;
+        simpleLine(u1, v1, u2, v2);
+    }
+    cout << "The mouse click co-ordinates are ";
+    cout << x << y << endl;
+}
+
+void cohen()
+{
+    code c1, c2, c;
+    int xi, yi, flag;
+    float m;
+
+    m = (v2 - v1) / (u2 - u1);
+
+    c1 = getCode(u1, v1);
+    c2 = getCode(u2, v2);
+
+    while (1)
+    {
+
+        //  if both endpoints are inside the window, then simply draw the line
+        if (c1.l == 0 && c2.l == 0 && c1.r == 0 && c2.r == 0 && c1.t == 0 && c2.t == 0 && c1.b == 0 && c2.b == 0)
+        {
+            break;
         }
+
+        //  if both endpoints are outside the window, then don't draw the line
+        else if (((c1.l && c2.l) || (c1.r && c2.r) || (c1.t && c2.t) || (c1.b && c2.b)) != 0)
+        {
+            u1 = v1 = u2 = v2 = 0;
+            break;
+        }
+
+        //  if line is partially inside, then there are four possibilities
+        else
+        {
+            if (c1.l == 1 || c2.l == 1)
+            {
+                xi = xl;
+                yi = v1 + m * (xl - u1);
+
+                if (c1.l == 1)
+                    flag = 0;
+
+                else
+                    flag = 1;
+            }
+
+            else if (c1.r == 1 || c2.r == 1)
+            {
+                xi = xh;
+                yi = v1 + m * (xh - u1);
+
+                if (c1.r == 1)
+                    flag = 0;
+
+                else
+                    flag = 1;
+            }
+
+            else if (c1.b == 1 || c2.b == 1)
+            {
+                xi = u1 + (1 / m) * (yl - v1);
+                yi = yl;
+
+                if (c1.b == 1)
+                    flag = 0;
+
+                else
+                    flag = 1;
+            }
+
+            else if (c1.t == 1 || c2.t == 1)
+            {
+                xi = u1 + (1 / m) * (yh - v1);
+                yi = yh;
+
+                if (c1.t == 1)
+                    flag = 0;
+
+                else
+                    flag = 1;
+            }
+
+            c = getCode(xi, yi);
+
+            if (flag == 0)
+            {
+                u1 = xi;
+                v1 = yi;
+                c1 = c;
+            }
+            else if (flag == 1)
+            {
+                u2 = xi;
+                v2 = yi;
+                c2 = c;
+            }
+        }   //  end else
+    }   //  end while
+
+    draw_window();
+    simpleLine(u1, v1, u2, v2);
+}
+
+void keyboard(char unsigned key, int x, int y)
+{
+    if (key == 'c')
+    {
+        initialize();
+        cohen();
     }
 
-    et[0][0] = xi;
-    et[0][1] = yi;
-    et[1][0] = xi + length;
-    et[1][1] = yi;
-    et[2][0] = length / 2 + xi;
-    et[2][1] = (sqrt(3) / 2 * length) + yi;
+    if (key == 'r')
+    {
+        initialize();
+        draw_window();
+        flag = 0;
+    }
+}
 
+int main(int argc, char** argv)
+{
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_SINGLE);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
     glutInitWindowPosition(0, 0);
-    glutInitWindowSize(600, 600);
-    glutCreateWindow("Practical 6th");
+    glutInitWindowSize(XMAX, YMAX);
+    glutCreateWindow("Line Clipping");
 
-    init();
-
-    glutDisplayFunc(display);
-
-    glutCreateMenu(menu);
-    glutAddMenuEntry("1. Translation", 1);
-    glutAddMenuEntry("2. Scalling", 2);
-    glutAddMenuEntry("3. Rotation", 3);
-    glutAddMenuEntry("4. Shearing", 4);
-    glutAttachMenu(GLUT_RIGHT_BUTTON);
-
+    gluOrtho2D(0, XMAX, 0, YMAX);
+    initialize();
+    glutDisplayFunc(draw_window);
+    glutMouseFunc(mouseListener);
+    glutKeyboardFunc(keyboard);
 
     glutMainLoop();
     return 0;
-
 }
