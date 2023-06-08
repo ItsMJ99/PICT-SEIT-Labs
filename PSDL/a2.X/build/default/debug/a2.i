@@ -10079,7 +10079,7 @@ unsigned char __t3rd16on(void);
 int main(void){
 
 
-    int arr[78];
+    int arr[100];
 
     int sum=0;
 
@@ -10096,7 +10096,7 @@ int main(void){
     TMR0=sum;
 
 
-
+    sum=100;
 
 
     return 0;

@@ -15,7 +15,6 @@ __Lirdata 0 0 CODE 0
 __HRAM 0 0 ABS 0
 __LRAM 1 0 ABS 0
 _T0CON FD5 0 ABS 0
-__end_of_delay 8000 0 CODE 0
 __Hconfig 30000E 0 CONFIG 4
 __Lconfig 0 0 CONFIG 4
 __Hbigram 0 0 ABS 0
@@ -30,9 +29,9 @@ __Hsfr 0 0 ABS 0
 __Lsfr 0 0 ABS 0
 __Hbss 0 0 RAM 1
 __Lbss 0 0 RAM 1
+_Delay 7FDC 0 CODE 0
 ___param_bank 0 0 ABS 0
 __Hnvrram 0 0 COMRAM 1
-_delay 7FDC 0 CODE 0
 __Lnvrram 0 0 COMRAM 1
 __Hbigsfr 0 0 ABS 0
 __Lbigsfr 0 0 ABS 0
@@ -156,6 +155,7 @@ __Lspace_4 0 0 ABS 0
 ___inthi_sp 0 0 STACK 2
 ___intlo_sp 0 0 STACK 2
 _INTCONbits FF2 0 ABS 0
+__end_of_Delay 8000 0 CODE 0
 __smallconst 0 0 SMALLCONST 0
 __Hreset_vec 804 0 CODE 0
 __Lreset_vec 800 0 CODE 0
@@ -176,7 +176,7 @@ text0 7FC6 7FDB CODE 7FC6 0
 cinit 7FC0 7FC5 CODE 7FC0 0
 %locals
 dist/default/production\a4.X.production.o
-C:\Users\MADHAV\AppData\Local\Temp\xcAsfu0.\driver_tmp_1.s
+C:\Users\MADHAV\AppData\Local\Temp\xcAsioo.\driver_tmp_1.s
 473 7FC0 0 CODE 0
 475 7FC0 0 CODE 0
 478 7FC0 0 CODE 0
@@ -184,18 +184,18 @@ C:\Users\MADHAV\AppData\Local\Temp\xcAsfu0.\driver_tmp_1.s
 486 7FC0 0 CODE 0
 487 7FC2 0 CODE 0
 a4.c
-48 7FC6 0 CODE 0
-49 7FC6 0 CODE 0
-50 7FCA 0 CODE 0
-52 7FCE 0 CODE 0
-53 7FD0 0 CODE 0
+24 7FC6 0 CODE 0
+25 7FC6 0 CODE 0
+26 7FCA 0 CODE 0
+28 7FCE 0 CODE 0
+29 7FD0 0 CODE 0
 a4.c
-38 7FDC 0 CODE 0
-39 7FDC 0 CODE 0
-40 7FE4 0 CODE 0
-41 7FE8 0 CODE 0
-42 7FEA 0 CODE 0
-43 7FEC 0 CODE 0
-44 7FFA 0 CODE 0
-45 7FFC 0 CODE 0
-46 7FFE 0 CODE 0
+9 7FDC 0 CODE 0
+11 7FDC 0 CODE 0
+12 7FE0 0 CODE 0
+15 7FE8 0 CODE 0
+16 7FEA 0 CODE 0
+18 7FEC 0 CODE 0
+19 7FFA 0 CODE 0
+20 7FFC 0 CODE 0
+22 7FFE 0 CODE 0

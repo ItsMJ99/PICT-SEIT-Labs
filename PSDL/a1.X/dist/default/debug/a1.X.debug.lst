@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.41 build 20230208172133 
-                                                                                               Tue Jun 06 13:44:26 2023
+                                                                                               Wed Jun 07 05:36:42 2023
 
 Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1 
      1                           	processor	18F458
@@ -92,7 +92,7 @@ Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1
     78 ;;
     79 ;; *************** function _main *****************
     80 ;; Defined at:
-    81 ;;		line 7 in file "a1.c"
+    81 ;;		line 9 in file "a1.c"
     82 ;; Parameters:    Size  Location     Type
     83 ;;		None
     84 ;; Auto vars:     Size  Location     Type
@@ -125,32 +125,32 @@ Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1
    111                           	callstack 31
    112   003FD4  FFFF               	dw	65535	; assembler added errata NOP
    113                           
-   114                           ;a1.c: 8:     TMR0=0xA7;
+   114                           ;a1.c: 10:     TMR0=0xA7;
    115   003FD6  0E00               	movlw	0
    116   003FD8  6ED7               	movwf	215,c	;volatile
    117   003FDA  0EA7               	movlw	167
    118   003FDC  6ED6               	movwf	214,c	;volatile
    119                           
-   120                           ;a1.c: 9:     TMR1=0x3F;
+   120                           ;a1.c: 11:     TMR1=0x3F;
    121   003FDE  0E00               	movlw	0
    122   003FE0  6ECF               	movwf	207,c	;volatile
    123   003FE2  0E3F               	movlw	63
    124   003FE4  6ECE               	movwf	206,c	;volatile
    125                           
-   126                           ;a1.c: 10:     TRISB=0;
+   126                           ;a1.c: 12:     TRISB=0;
    127   003FE6  0E00               	movlw	0
    128   003FE8  6E93               	movwf	147,c	;volatile
    129   003FEA                     
-   130                           ;a1.c: 11:     PORTB=TMR0+TMR1;
+   130                           ;a1.c: 13:     PORTB=TMR0+TMR1;
    131   003FEA  50D6               	movf	214,w,c	;volatile
    132   003FEC  24CE               	addwf	206,w,c	;volatile
    133   003FEE  6E81               	movwf	129,c	;volatile
    134   003FF0                     
-   135                           ;a1.c: 13:     TRISC=0;
+   135                           ;a1.c: 15:     TRISC=0;
    136   003FF0  0E00               	movlw	0
    137   003FF2  6E94               	movwf	148,c	;volatile
    138                           
-   139                           ;a1.c: 14:     PORTC=TMR0-TMR1;
+   139                           ;a1.c: 16:     PORTC=TMR0-TMR1;
    140   003FF4  50CE               	movf	206,w,c	;volatile
    141   003FF6  5CD6               	subwf	214,w,c	;volatile
    142   003FF8  6E82               	movwf	130,c	;volatile
@@ -456,7 +456,7 @@ SFR                  0      0       0     200        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.41 build 20230208172133 
-Symbol Table                                                                                   Tue Jun 06 13:44:26 2023
+Symbol Table                                                                                   Wed Jun 07 05:36:42 2023
 
                                            l17 3FFA                                            l693 3FD4  
                                           l695 3FEA                                            l697 3FF0  

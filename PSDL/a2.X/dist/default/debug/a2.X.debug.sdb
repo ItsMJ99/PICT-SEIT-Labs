@@ -35,10 +35,10 @@
 [v _main main `(i  1 e 2 0 ]
 {
 "23
-[v main@i i `i  1 a 2 158 ]
+[v main@i i `i  1 a 2 202 ]
 "14
-[v main@arr arr `[78]i  1 a 156 0 ]
+[v main@arr arr `[100]i  1 a 200 0 ]
 "16
-[v main@sum sum `i  1 a 2 156 ]
+[v main@sum sum `i  1 a 2 200 ]
 "42
 } 0

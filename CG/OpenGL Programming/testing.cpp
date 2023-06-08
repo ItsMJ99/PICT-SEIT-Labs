@@ -1,96 +1,217 @@
-#include <iostream>
+
+#include <stdlib.h>
+#include <bits/stdc++.h>
+
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#else
 #include <GL/glut.h>
-#include <GL/freeglut.h>
-#include <cmath>
+#endif
 
-#define RADIAN (3.14/180)
-#define XMAX 1400
-#define YMAX 900
+#include<math.h>
 
-int iterations = 1;  // Number of iterations for the Koch curve
+using namespace std;
 
-void Initialize()
-{
-    glClear(GL_COLOR_BUFFER_BIT);
-    glClearColor(0.0, 0.0, 0.0, 0.0);
-    glColor3f(1.0, 1.0, 1.0);
-    gluOrtho2D(0.0, XMAX, 0.0, YMAX);
-}
+double et[3][3] = { 1 }, ans[3][3] = { 0 };
+float xi, yi;
+int length;
 
-void draw_koch(float xa, float ya, float xb, float yb, int n)
-{
-    float xc, xd, yc, yd, midx, midy;
-
-    xc = (2 * xa + xb) / 3;
-    yc = (2 * ya + yb) / 3;
-    xd = (2 * xb + xa) / 3;
-    yd = (2 * yb + ya) / 3;
-
-    midx = xc + ((xd - xc) * cos(60 * RADIAN)) + ((yd - yc) * sin(60 * RADIAN));
-    midy = yc - ((xd - xc) * sin(60 * RADIAN)) + ((yd - yc) * cos(60 * RADIAN));
-
-    if (n > 0)
-    {
-        draw_koch(xa, ya, xc, yc, n - 1);
-        draw_koch(xc, yc, midx, midy, n - 1);
-        draw_koch(midx, midy, xd, yd, n - 1);
-        draw_koch(xd, yd, xb, yb, n - 1);
+void drawEt(double temp[3][3]) {
+    glLineWidth(3);
+    glBegin(GL_LINE_LOOP);
+    for (int i = 0; i < 3; i++) {
+        glVertex2i(temp[i][0], temp[i][1]);
     }
-    else
-    {
-        glVertex2f(xa, ya);
-        glVertex2f(xc, yc);
-
-        glVertex2f(xc, yc);
-        glVertex2f(midx, midy);
-
-        glVertex2f(midx, midy);
-        glVertex2f(xd, yd);
-
-        glVertex2f(xd, yd);
-        glVertex2f(xb, yb);
-    }
-}
-
-void display()
-{
-    glClear(GL_COLOR_BUFFER_BIT);
-    glBegin(GL_LINES);
-    draw_koch(600, 100, 800, 400, iterations);
-    draw_koch(800, 400, 400, 400, iterations);
-    draw_koch(400, 400, 600, 100, iterations);
     glEnd();
     glFlush();
 }
 
-void mouseClick(int button, int state, int x, int y)
-{
-    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
-    {
-        iterations++;
-        glutPostRedisplay();
+void multi3X3(double m1[3][3], double m2[3][3]) {
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            int sum = 0;
+            for (int k = 0; k < 3; k++) {
+                sum += m1[i][k] * m2[k][j];
+            }
+            ans[i][j] = sum;
+        }
     }
-    else if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN)
-    {
-        iterations--;
-        if (iterations < 1)
-            iterations = 1;
-        glutPostRedisplay();
+
+}
+
+void translation() {
+    double tx, ty;
+    double temp[3][3] = { 0 };
+    cout << "Enter tx: ";
+    cin >> tx;
+    cout << "Enter ty: ";
+    cin >> ty;
+
+    temp[0][0] = 1;
+    temp[1][1] = 1;
+    temp[2][2] = 1;
+    temp[2][0] = tx;
+    temp[2][1] = ty;
+
+    multi3X3(et, temp);
+    glColor3f(1, 1, 0);
+    drawEt(ans);
+
+}
+
+void scalling() {
+    double sx, sy;
+    double temp[3][3] = { 0 };
+    cout << "ENter sx: ";
+    cin >> sx;
+    cout << "Enter sy: ";
+    cin >> sy;
+
+    temp[0][0] = sx;
+    temp[1][1] = sy;
+    temp[2][2] = 1;
+
+    multi3X3(et, temp);
+    glColor3f(1, 0, 1);
+    drawEt(ans);
+}
+
+void rotation() {
+    double rx, ry, angle, temp[3][3] = { 0 };
+    cout << "Enter arbiratary x point: ";
+    cin >> rx;
+    cout << "Enter arbitratiry y point: ";
+    cin >> ry;
+    cout << "Enter rotation angle: ";
+    cin >> angle;
+
+    angle = angle * (M_PI / 180);
+
+    temp[0][0] = cos(angle);
+    temp[0][1] = sin(angle);
+    temp[1][0] = -sin(angle);
+    temp[1][1] = cos(angle);
+    temp[2][0] = rx - (rx * cos(angle)) + (ry * sin(angle));
+    temp[2][1] = ry - (rx * sin(angle)) - (ry * cos(angle));
+    temp[2][2] = 1;
+
+    multi3X3(et, temp);
+    glColor3f(0, 1, 1);
+    drawEt(ans);
+}
+
+void shearing() {
+    int ch = 0;
+    double shx, shy, temp[3][3] = { 0 };
+
+    cout << "Enter 1 for shx, 2 for shy: ";
+    cin >> ch;
+
+    if (ch == 1) {
+        cout << "Enter shx factor: ";
+        cin >> shx;
+        temp[0][0] = 1;
+        temp[1][1] = 1;
+        temp[2][2] = 1;
+        temp[1][0] = shx;
+    }
+    else {
+        cout << "Enter shy factor: ";
+        cin >> shy;
+        temp[0][0] = 1;
+        temp[1][1] = 1;
+        temp[2][2] = 1;
+        temp[0][1] = shy;
+    }
+
+    multi3X3(et, temp);
+    glColor3f(1, 0, 0);
+    drawEt(ans);
+}
+
+void menu(int item) {
+    switch (item) {
+    case 1:
+        translation();
+        break;
+    case 2:
+        scalling();
+        break;
+    case 3:
+        rotation();
+        break;
+    case 4:
+        shearing();
+        break;
+    default:
+        break;
     }
 }
 
-int main(int argc, char** argv)
-{
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowSize(XMAX, YMAX);
-    glutInitWindowPosition(0, 0);
-    glutCreateWindow("KOCH CURVE");
+void display() {
+    glColor3f(1, 0, 0);
+    glBegin(GL_LINE_LOOP);
+    glVertex2i(-300, 0);
+    glVertex2i(300, 0);
+    glEnd();
+    glBegin(GL_LINE_LOOP);
+    glVertex2i(0, 300);
+    glVertex2i(0, -300);
+    glEnd();
+    glFlush();
 
-    Initialize();
+    glColor3f(0, 0, 1);
+    drawEt(et);
+}
+
+void init() {
+    glClearColor(1, 1, 1, 0);
+    glClear(GL_COLOR_BUFFER_BIT);
+    gluOrtho2D(-300, 300, -300, 300);
+}
+
+int main(int argc, char** argv) {
+
+    cout << "Enter x coordinate: ";
+    cin >> xi;
+    cout << "Enter y coordinate: ";
+    cin >> yi;
+    cout << "Enter line length: ";
+    cin >> length;
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            et[i][j] = 1;
+        }
+    }
+
+    et[0][0] = xi;
+    et[0][1] = yi;
+    et[1][0] = xi + length;
+    et[1][1] = yi;
+    et[2][0] = length / 2 + xi;
+    et[2][1] = (sqrt(3) / 2 * length) + yi;
+
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE);
+    glutInitWindowPosition(0, 0);
+    glutInitWindowSize(600, 600);
+    glutCreateWindow("Practical 6th");
+
+    init();
+
     glutDisplayFunc(display);
-    glutMouseFunc(mouseClick);
+
+    glutCreateMenu(menu);
+    glutAddMenuEntry("1. Translation", 1);
+    glutAddMenuEntry("2. Scalling", 2);
+    glutAddMenuEntry("3. Rotation", 3);
+    glutAddMenuEntry("4. Shearing", 4);
+    glutAttachMenu(GLUT_RIGHT_BUTTON);
+
 
     glutMainLoop();
     return 0;
+
 }

@@ -10,8 +10,8 @@ particular PIC and XC compiler is loaded */
 int is mainly used so we have to return 0*/ 
 int main(void){
     
-    //declares an int array of 100 size
-    int arr[78];
+    //declares an int array of 78 size
+    int arr[100];
     //declares int sum which will store the sum of array values
     int sum=0;
     
@@ -35,7 +35,7 @@ int main(void){
     TMR0=sum;
     
     //reinitialized value to 100
-    //sum=100;
+    sum=100;
     
     //ends the program
     return 0;

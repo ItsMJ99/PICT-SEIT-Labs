@@ -1,7 +1,7 @@
 ### HEXMate logfile and output summary ###
 
 ### Command-line arguments ###
- C:\Users\MADHAV\AppData\Local\Temp\xcAsogo.\driver_tmp_3.o
+ C:\Users\MADHAV\AppData\Local\Temp\xcAsasg.\driver_tmp_3.o
  -Odist/default/debug\a1.X.debug.hex
  -logfile=dist/default/debug\a1.X.debug.hxl
  -addressing=1
@@ -14,11 +14,11 @@
 
 ### Memory Usage ###
  Input file ranges:
-  0h - 5h		(C:\Users\MADHAV\AppData\Local\Temp\xcAsogo.\driver_tmp_3.o)
-  3FCCh - 3FFFh		(C:\Users\MADHAV\AppData\Local\Temp\xcAsogo.\driver_tmp_3.o)
-  200000h - 200007h		(C:\Users\MADHAV\AppData\Local\Temp\xcAsogo.\driver_tmp_3.o)
-  300000h - 300003h		(C:\Users\MADHAV\AppData\Local\Temp\xcAsogo.\driver_tmp_3.o)
-  300006h - 30000Dh		(C:\Users\MADHAV\AppData\Local\Temp\xcAsogo.\driver_tmp_3.o)
+  0h - 5h		(C:\Users\MADHAV\AppData\Local\Temp\xcAsasg.\driver_tmp_3.o)
+  3FCCh - 3FFFh		(C:\Users\MADHAV\AppData\Local\Temp\xcAsasg.\driver_tmp_3.o)
+  200000h - 200007h		(C:\Users\MADHAV\AppData\Local\Temp\xcAsasg.\driver_tmp_3.o)
+  300000h - 300003h		(C:\Users\MADHAV\AppData\Local\Temp\xcAsasg.\driver_tmp_3.o)
+  300006h - 30000Dh		(C:\Users\MADHAV\AppData\Local\Temp\xcAsasg.\driver_tmp_3.o)
  Unused ranges:
   6h - 3FCBh
   4000h - 1FFFFFh
@@ -28,7 +28,7 @@
 ### Hex Memory Map ###
  Legend:
   -- = Unused memory
-  H1 = Input file             (C:\Users\MADHAV\AppData\Local\Temp\xcAsogo.\driver_tmp_3.o)
+  H1 = Input file             (C:\Users\MADHAV\AppData\Local\Temp\xcAsasg.\driver_tmp_3.o)
 ----------------------------------------------------------
          | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
 ----------------------------------------------------------

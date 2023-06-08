@@ -7,7 +7,11 @@
 # 1 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "a4.c" 2
-# 35 "a4.c"
+
+
+
+
+
 # 1 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -5714,26 +5718,31 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.05/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\\pic\\include\\xc.h" 2 3
-# 35 "a4.c" 2
+# 6 "a4.c" 2
 
 
 
-void delay(){
-    TMR0=18720;
+void Delay(){
+
     T0CON=0x07;
+    TMR0=18720;
+
+
     T0CONbits.TMR0ON=1;
     INTCONbits.TMR0IF=0;
+
     while(INTCONbits.TMR0IF==0);
     T0CONbits.TMR0ON=0;
     INTCONbits.TMR0IF=0;
+    return;
 }
 
-int main(){
+int main(void){
     TRISB=0;
     PORTB=0x55;
     while(1){
         PORTB=~PORTB;
-        delay();
+        Delay();
     }
     return 0;
 }

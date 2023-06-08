@@ -758,8 +758,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _main ]
 [f ]
 "14
-[; ;a2.c: 14:     int arr[78];
-[v _arr `i ~T0 @X0 -> 78 `i a ]
+[; ;a2.c: 14:     int arr[100];
+[v _arr `i ~T0 @X0 -> 100 `i a ]
 "16
 [; ;a2.c: 16:     int sum=0;
 [v _sum `i ~T0 @X0 1 a ]
@@ -789,6 +789,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "35
 [; ;a2.c: 35:     TMR0=sum;
 [e = _TMR0 -> _sum `us ]
+"38
+[; ;a2.c: 38:     sum=100;
+[e = _sum -> 100 `i ]
 "41
 [; ;a2.c: 41:     return 0;
 [e ) -> 0 `i ]
