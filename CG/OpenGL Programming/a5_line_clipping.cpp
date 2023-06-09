@@ -1,15 +1,15 @@
-#include<GL/glut.h>
 #include<iostream>
+#include<GL/glut.h>
 using namespace std;
-#define xmax 700
-#define ymax 700
+#define xmax 1024
+#define ymax 768
 
-int xl = 200, yl = 200, xh = 500, yh = 500;
-int flag = 0;
+float xl = 200, yl = 200, xh = 600, yh = 600;
 float u1, v1, u2, v2;
+int flag = 0;
 
 struct code {
-    int t, b, r, l;
+    float l, r, b, t;
 };
 
 void init() {
@@ -17,7 +17,7 @@ void init() {
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
-code getcode(int x, int y) {
+code getCode(float x, float y) {
     code c = { 0,0,0,0 };
     if (x < xl)
         c.l = 1;
@@ -31,12 +31,13 @@ code getcode(int x, int y) {
 }
 
 void dda(float x1, float y1, float x2, float y2) {
-    float xi, yi, step, dx, dy;
-    dx = x2 - x1;
+    float xi, yi, dx, dy, step;
     dy = y2 - y1;
+    dx = x2 - x1;
     step = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
     xi = dx / step;
     yi = dy / step;
+
     glBegin(GL_POINTS);
     glVertex2f(x1, y1);
     for (int i = 0;i < step;i++) {
@@ -54,7 +55,6 @@ void drawWindow() {
     dda(xh, yl, xh, yh);
     dda(xh, yh, xl, yh);
     dda(xl, yh, xl, yl);
-    glFlush();
 }
 
 void mouse(int button, int state, int x, int y) {
@@ -70,24 +70,20 @@ void mouse(int button, int state, int x, int y) {
         flag = 2;
         dda(u1, v1, u2, v2);
     }
-    cout << "Mouse Coordinates : " << x << " " << y << endl;
 }
 
 void lineClipping() {
+    float xi, yi, m;
+    int flag = 0;
     code c, c1, c2;
-    int xi, yi, flag;
-    float m;
 
+    c1 = getCode(u1, v1);
+    c2 = getCode(u2, v2);
     m = (v2 - v1) / (u2 - u1);
-
-    c1 = getcode(u1, v1);
-    c2 = getcode(u2, v2);
-
     while (1) {
         if (c1.l == 0 && c2.l == 0 && c1.r == 0 && c2.r == 0 && c1.b == 0 && c2.b == 0 && c1.t == 0 && c2.t == 0) {
             break;
         }
-
         else if (((c1.l && c2.l) || (c1.r && c2.r) || (c1.b && c2.b) || (c1.t && c2.t)) != 0) {
             u1 = v1 = u2 = v2 = 0;
             break;
@@ -126,7 +122,7 @@ void lineClipping() {
                     flag = 1;
             }
 
-            c = getcode(xi, yi);
+            c = getCode(xi, yi);
 
             if (flag == 0) {
                 u1 = xi;
@@ -144,12 +140,12 @@ void lineClipping() {
     dda(u1, v1, u2, v2);
 }
 
-void keyboard(char unsigned key, int x, int y) {
+void keyboard(unsigned char key, int x, int y) {
     if (key == 'c') {
         init();
         lineClipping();
     }
-    if (key == 'r') {
+    else if (key == 'r') {
         init();
         drawWindow();
         flag = 0;
@@ -168,6 +164,4 @@ int main(int argc, char** argv) {
     glutMouseFunc(mouse);
     glutKeyboardFunc(keyboard);
     glutMainLoop();
-
-    return 0;
 }
