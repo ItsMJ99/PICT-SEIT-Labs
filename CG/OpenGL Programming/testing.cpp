@@ -1,7 +1,5 @@
-#include<iostream>
-#include<cmath>
 #include<GL/glut.h>
-using namespace std;
+#include<cmath>
 #define pi 3.14
 int frame = 0;
 
@@ -54,27 +52,26 @@ void drawSun() {
     drawDisk(10);
 }
 
+
 void drawChakra() {
     glBegin(GL_POLYGON);
-    glColor3f(0.0, 0.0, 1.0);
-    drawDisk(35);
-    glColor3f(1.0, 1.0, 1.0);
-    drawDisk(25);
+    glColor3f(0, 0, 1);
+    drawDisk(40);
+    glColor3f(1, 1, 1);
+    drawDisk(30);
     glEnd();
     for (int i = 0;i < 24;i++) {
         glRotatef(360 / 24, 0, 0, 1);
         glBegin(GL_LINES);
-        glColor3f(0.0, 0.0, 1.0);
+        glColor3f(0, 0, 1);
         glVertex2f(0, 0);
-        glVertex2f(35, 0);
+        glVertex2f(40, 0);
         glEnd();
     }
 }
 
-
 void animate() {
     glClear(GL_COLOR_BUFFER_BIT);
-
     drawBase();
 
     glColor3f(0.0, 0.0, 0.0);
@@ -86,7 +83,7 @@ void animate() {
     glLineWidth(1);
 
     glPushMatrix();
-    glTranslated(0, ((frame + 10) % 400), 0);
+    glTranslatef(0, (frame + 10) % 400, 0);
     drawFlag();
     glPopMatrix();
 
@@ -104,23 +101,24 @@ void animate() {
     glutSwapBuffers();
 }
 
-void doframe(int v) {
-    frame++;
-    glutPostRedisplay();
-    glutTimerFunc(10, doframe, 0);
-}
-
 void init() {
     glClearColor(0.2, 0.6, 1.0, 1.0);
-    gluOrtho2D(0, 1024, 0, 768);
+    glClear(GL_COLOR_BUFFER_BIT);
+    gluOrtho2D(0, 1000, 0, 1000);
+}
+
+void doframe(int v) {
+    frame++;
+    glutTimerFunc(10, doframe, 0);
+    glutPostRedisplay();
 }
 
 int main(int argc, char** argv) {
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_DOUBLE);
+    glutInitDisplayMode(GLUT_SINGLE);
+    glutInitWindowSize(1000, 1000);
     glutInitWindowPosition(800, 200);
-    glutInitWindowSize(1024, 768);
-    glutCreateWindow("Flag Hoisting");
+    glutCreateWindow("Assignment 7 Koch Curve");
     init();
     glutDisplayFunc(animate);
     glutTimerFunc(10, doframe, 0);

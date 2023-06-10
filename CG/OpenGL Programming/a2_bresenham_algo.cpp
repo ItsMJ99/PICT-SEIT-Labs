@@ -1,62 +1,51 @@
 #include<GL/glut.h>
 
-void bresenhamAlgo(float x1, float y1, float x2, float y2) {
-    float dx, dy, x, y, xc, yc, p;
-    dy = abs(y2 - y1);
+void bresenham(float x1, float y1, float x2, float y2) {
+    float x, y, xi, yi, p, dx, dy;
     dx = abs(x2 - x1);
+    dy = abs(y2 - y1);
+    dx = dx < 0 ? -dx : dx;
+    dy = dy < 0 ? -dy : dy;
+
+    xi = x1 > x2 ? -1 : 1;
+    yi = y1 > y2 ? -1 : 1;
+
     x = x1;
     y = y1;
-    dy = dy < 0 ? -dy : dy;
-    dx = dx < 0 ? -dx : dx;
-
-    xc = x1 > x1 ? -1 : 1;
-    yc = y1 > y2 ? -1 : 1;
-
-    if (dx == 0) {
-        glBegin(GL_POINTS);
-        for (int i = 0;i < dy;i++) {
-            y += yc;
-            glVertex2f(x, y);
-        }
-        glEnd();
-    }
-
-    if (dy == 0) {
-        glBegin(GL_POINTS);
-        for (int i = 0;i < dx;i++) {
-            x += xc;
-            glVertex2f(x, y);
-        }
-        glEnd();
-    }
 
     glBegin(GL_POINTS);
-    if (dx > dy) {
+    if (dx >= dy) {
         p = 2 * dy - dx;
+        glVertex2f(x, y);
         for (int i = 0;i < dx;i++) {
-            if (p > 0) {
-                y += yc;
-                p = p + 2 * (dy - dx);
+            if (p >= 0) {
+                y += yi;
+                p += 2 * dy - 2 * dx;
             }
             else {
-                p = p + 2 * dy;
+                p += 2 * dy;
             }
-            x += xc;
-            glVertex2f(x, y);
+            x += xi;
+            if ((i % 10) != 0 && ((i + 1) % 10) != 0) {
+                glVertex2f(x, y);
+            }
         }
     }
     else {
-        p = 2 * dx - dy;
+        p = 2 * dy - dx;
+        glVertex2f(x, y);
         for (int i = 0;i < dy;i++) {
-            if (p > 0) {
-                x += xc;
-                p = p + 2 * (dx - dy);
+            if (p >= 0) {
+                x += xi;
+                p += 2 * dx - 2 * dy;
             }
             else {
-                p = p + 2 * dx;
+                p += 2 * dx;
             }
-            y += yc;
-            glVertex2f(x, y);
+            y += yi;
+            if ((i % 10) != 0 && ((i + 1) % 10) != 0) {
+                glVertex2f(x, y);
+            }
         }
     }
     glEnd();
@@ -64,20 +53,23 @@ void bresenhamAlgo(float x1, float y1, float x2, float y2) {
 }
 
 void draw() {
+    glColor3f(1, 1, 1);
+    bresenham(0, 500, 500, 500);
+}
+
+void init() {
     glClearColor(0.0, 0.0, 0.0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT);
-    gluOrtho2D(0, 1024, 768, 0);
-    glColor3f(0.0, 1.0, 0.0);
-    bresenhamAlgo(100, 100, 500, 100);
-    bresenhamAlgo(100, 100, 500, 200);
+    gluOrtho2D(0, 1000, 0, 1000);
 }
 
 int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE);
-    glutInitWindowPosition(500, 500);
-    glutInitWindowSize(1024, 768);
-    glutCreateWindow("Assignment 2 Bresenham");
+    glutInitWindowPosition(800, 200);
+    glutInitWindowSize(1000, 1000);
+    glutCreateWindow("Bresenham Line");
+    init();
     glutDisplayFunc(draw);
     glutMainLoop();
 }

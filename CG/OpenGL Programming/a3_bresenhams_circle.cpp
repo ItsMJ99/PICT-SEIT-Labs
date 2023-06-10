@@ -1,39 +1,32 @@
-//edit the comments a bit and check the logic, it can work for both with mouse & keyboard or without both just enter values in function
-
-#include<iostream>
 #include<GL/glut.h>
-using namespace std;
-
-//int cx, cy, radius;
 
 void plotPoints(int cx, int cy, int x, int y) {
-    glColor3f(1.0, 0.4, 0.7);
     glBegin(GL_POINTS);
-    glVertex2i(cx + x, cy + y);
-    glVertex2i(cx - x, cy + y);
-    glVertex2i(cx + x, cy - y);
-    glVertex2i(cx - x, cy - y);
-    glVertex2i(cx + y, cy + x);
-    glVertex2i(cx - y, cy + x);
-    glVertex2i(cx + y, cy - x);
-    glVertex2i(cx - y, cy - x);
+    glVertex2f(cx + x, cy + y);
+    glVertex2f(cx - x, cy + y);
+    glVertex2f(cx + x, cy - y);
+    glVertex2f(cx - x, cy - y);
+    glVertex2f(cx + y, cy + x);
+    glVertex2f(cx - y, cy + x);
+    glVertex2f(cx + y, cy - x);
+    glVertex2f(cx - y, cy - x);
     glEnd();
     glFlush();
 }
 
-void drawCircle(int cx, int cy, int radius) {
+void bresenhamCircle(int cx, int cy, int rad) {
     int x = 0;
-    int y = radius;
-    int d = 3 - 2 * radius;
+    int y = rad;
+    int p = 3 - 2 * rad;
     plotPoints(cx, cy, x, y);
     while (y >= x) {
         x++;
-        if (d > 0) {
+        if (p >= 0) {
             y--;
-            d += 4 * (x - y) + 10;
+            p += 4 * (x - y) + 10;
         }
         else {
-            d += 4 * x + 6;
+            p += 4 * (x)+6;
         }
         plotPoints(cx, cy, x, y);
     }
@@ -56,26 +49,23 @@ void drawCircle(int cx, int cy, int radius) {
 
 void draw() {
     //glutMouseFunc(mouseFunc);
-    glClearColor(1.0, 1.0, 1.0, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT);
-    gluOrtho2D(0, 1024, 768, 0);
-    drawCircle(200, 200, 100);
-    drawCircle(300, 200, 100);
+    glColor3f(1, 1, 1);
+    bresenhamCircle(400, 500, 100);
 }
 
-// void init() {
-//     glClearColor(1.0, 1.0, 1.0, 1.0);
-//     glClear(GL_COLOR_BUFFER_BIT);
-//     gluOrtho2D(0, 1024, 768, 0);
-// }
+void init() {
+    glClearColor(0.0, 0.0, 0.0, 0.0);
+    glClear(GL_COLOR_BUFFER_BIT);
+    gluOrtho2D(0, 1000, 0, 1000);
+}
 
 int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE);
-    glutInitWindowPosition(0, 0);
-    glutInitWindowSize(1024, 768);
+    glutInitWindowPosition(800, 200);
+    glutInitWindowSize(1000, 1000);
     glutCreateWindow("Assignment 3 Bresenham's Circle Algorithm");
-    //init();
+    init();
     glutDisplayFunc(draw);
     glutMainLoop();
     return 0;
