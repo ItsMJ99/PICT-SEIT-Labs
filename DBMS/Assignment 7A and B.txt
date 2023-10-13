@@ -1,0 +1,371 @@
+Assignment 7A
+
+mysql> create database store;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use store;
+Database changed
+
+mysql> create table orders (u_id int,u_name varchar(20),o_id int auto_increment,primary key(o_id),item varchar(30),price int,address varchar(20),o_date date);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc orders;
++---------+-------------+------+-----+---------+----------------+
+| Field   | Type        | Null | Key | Default | Extra          |
++---------+-------------+------+-----+---------+----------------+
+| u_id    | int         | YES  |     | NULL    |                |
+| u_name  | varchar(20) | YES  |     | NULL    |                |
+| o_id    | int         | NO   | PRI | NULL    | auto_increment |
+| item    | varchar(30) | YES  |     | NULL    |                |
+| price   | int         | YES  |     | NULL    |                |
+| address | varchar(20) | YES  |     | NULL    |                |
+| o_date  | date        | YES  |     | NULL    |                |
++---------+-------------+------+-----+---------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> insert into orders (u_id,u_name,o_id,item,price,address,o_date) values (100,'Rahul',1,'brush',20,'pune',CURRENT_DATE);
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  insert into orders (u_id,u_name,item,price,address,o_date) values (100,'Rahul','Shoes',5000,'pune',CURRENT_DATE);
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  insert into orders (u_id,u_name,item,price,address,o_date) values (100,'Rahul','shirt',1000,'pune',CURRENT_DATE);
+Query OK, 1 row affected (0.00 sec)
+
+mysql>  insert into orders (u_id,u_name,item,price,address,o_date) values (101,'Neha','shirt',1000,'nagpur',CURRENT_DATE);
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  insert into orders (u_id,u_name,item,price,address,o_date) values (101,'Neha','jeans',1500,'nagpur',CURRENT_DATE);
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  insert into orders (u_id,u_name,item,price,address,o_date) values (102,'Simran','blue jeans',2500,'pune',CURRENT_DATE);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from orders;
++------+--------+------+------------+-------+---------+------------+
+| u_id | u_name | o_id | item       | price | address | o_date     |
++------+--------+------+------------+-------+---------+------------+
+|  100 | Rahul  |    1 | brush      |    20 | pune    | 2023-05-08 |
+|  100 | Rahul  |    2 | Shoes      |  5000 | pune    | 2023-05-08 |
+|  100 | Rahul  |    3 | shirt      |  1000 | pune    | 2023-05-08 |
+|  101 | Neha   |    4 | shirt      |  1000 | nagpur  | 2023-05-08 |
+|  101 | Neha   |    5 | jeans      |  1500 | nagpur  | 2023-05-08 |
+|  102 | Simran |    6 | blue jeans |  2500 | pune    | 2023-05-08 |
++------+--------+------+------------+-------+---------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from orders where u_name='Simran';
++------+--------+------+------------+-------+---------+------------+
+| u_id | u_name | o_id | item       | price | address | o_date     |
++------+--------+------+------------+-------+---------+------------+
+|  102 | Simran |    6 | blue jeans |  2500 | pune    | 2023-05-08 |
++------+--------+------+------------+-------+---------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * from orders where o_id=4;
++------+--------+------+-------+-------+---------+------------+
+| u_id | u_name | o_id | item  | price | address | o_date     |
++------+--------+------+-------+-------+---------+------------+
+|  101 | Neha   |    4 | shirt |  1000 | nagpur  | 2023-05-08 |
++------+--------+------+-------+-------+---------+------------+
+1 row in set (0.01 sec)
+
+mysql> select sum(price) as total_price from orders;
++-------------+
+| total_price |
++-------------+
+|       11020 |
++-------------+
+1 row in set (0.01 sec)
+
+mysql> select * from orders order by price desc;
++------+--------+------+------------+-------+---------+------------+
+| u_id | u_name | o_id | item       | price | address | o_date     |
++------+--------+------+------------+-------+---------+------------+
+|  100 | Rahul  |    2 | Shoes      |  5000 | pune    | 2023-05-08 |
+|  102 | Simran |    6 | blue jeans |  2500 | pune    | 2023-05-08 |
+|  101 | Neha   |    5 | jeans      |  1500 | nagpur  | 2023-05-08 |
+|  100 | Rahul  |    3 | shirt      |  1000 | pune    | 2023-05-08 |
+|  101 | Neha   |    4 | shirt      |  1000 | nagpur  | 2023-05-08 |
+|  100 | Rahul  |    1 | brush      |    20 | pune    | 2023-05-08 |
++------+--------+------+------------+-------+---------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from orders where u_name like 'Rav%';
+Empty set (0.01 sec)
+
+mysql> select * from orders where price=(select max(price) from orders);
++------+--------+------+-------+-------+---------+------------+
+| u_id | u_name | o_id | item  | price | address | o_date     |
++------+--------+------+-------+-------+---------+------------+
+|  100 | Rahul  |    2 | Shoes |  5000 | pune    | 2023-05-08 |
++------+--------+------+-------+-------+---------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * from orders where address='pune' and o_date='2016-08-22';
+Empty set (0.01 sec)
+
+mysql> update orders set price=10000 where o_id=2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update orders set price=price-((5*price)/100) where price>=10000;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from orders;
++------+--------+------+------------+-------+---------+------------+
+| u_id | u_name | o_id | item       | price | address | o_date     |
++------+--------+------+------------+-------+---------+------------+
+|  100 | Rahul  |    1 | brush      |    20 | pune    | 2023-05-08 |
+|  100 | Rahul  |    2 | Shoes      |  9500 | pune    | 2023-05-08 |
+|  100 | Rahul  |    3 | shirt      |  1000 | pune    | 2023-05-08 |
+|  101 | Neha   |    4 | shirt      |  1000 | nagpur  | 2023-05-08 |
+|  101 | Neha   |    5 | jeans      |  1500 | nagpur  | 2023-05-08 |
+|  102 | Simran |    6 | blue jeans |  2500 | pune    | 2023-05-08 |
++------+--------+------+------------+-------+---------+------------+
+6 rows in set (0.00 sec)
+
+mysql> delete from orders where o_id=2;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from orders;
++------+--------+------+------------+-------+---------+------------+
+| u_id | u_name | o_id | item       | price | address | o_date     |
++------+--------+------+------------+-------+---------+------------+
+|  100 | Rahul  |    1 | brush      |    20 | pune    | 2023-05-08 |
+|  100 | Rahul  |    3 | shirt      |  1000 | pune    | 2023-05-08 |
+|  101 | Neha   |    4 | shirt      |  1000 | nagpur  | 2023-05-08 |
+|  101 | Neha   |    5 | jeans      |  1500 | nagpur  | 2023-05-08 |
+|  102 | Simran |    6 | blue jeans |  2500 | pune    | 2023-05-08 |
++------+--------+------+------------+-------+---------+------------+
+5 rows in set (0.00 sec)
+
+mysql> create table i_orders(o_id int,item varchar(20),quantity int);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc i_orders;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| o_id     | int         | YES  |     | NULL    |       |
+| item     | varchar(20) | YES  |     | NULL    |       |
+| quantity | int         | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into i_orders values(1,'brush',5),(2,'jacket',7),(4,'shirt',1),(6,'blue jeans',2);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from i_orders;
++------+------------+----------+
+| o_id | item       | quantity |
++------+------------+----------+
+|    1 | brush      |        5 |
+|    2 | jacket     |        7 |
+|    4 | shirt      |        1 |
+|    6 | blue jeans |        2 |
++------+------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select orders.o_id,i_orders.o_id from i_orders inner join orders on orders.o_id=i_orders.o_id;
++------+------+
+| o_id | o_id |
++------+------+
+|    1 |    1 |
+|    4 |    4 |
+|    6 |    6 |
++------+------+
+3 rows in set (0.00 sec)
+
+mysql> select orders.o_id,i_orders.item from orders left join i_orders on orders.o_id=i_orders.o_id;
++------+------------+
+| o_id | item       |
++------+------------+
+|    1 | brush      |
+|    3 | NULL       |
+|    4 | shirt      |
+|    5 | NULL       |
+|    6 | blue jeans |
++------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select orders.item,i_orders.o_id from orders FULL OUTER JOIN i_orders on orders.o_id=i_orders.o_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'OUTER JOIN i_orders on orders.o_id=i_orders.o_id' at line 1
+
++------+------------+
+| o_id | item       |
++------+------------+
+|    1 | brush      |
+|    2 | NULL       |
+|    3 | NULL       |
+|    4 | shirt      |
+|    5 | NULL       |
+|    6 | blue jeans |
++------+------------+
+6 rows in set (0.00 sec)
+
+
+Assignment 7B
+
+mysql> select count(distinct u_name) as total_customers from orders;
++-----------------+
+| total_customers |
++-----------------+
+|               3 |
++-----------------+
+1 row in set (0.01 sec)
+
+mysql> select u_name,avg(price) from orders group by u_name;
++--------+------------+
+| u_name | avg(price) |
++--------+------------+
+| Rahul  |   510.0000 |
+| Neha   |  1250.0000 |
+| Simran |  2500.0000 |
++--------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select u_name,sum(price) as total_amount from orders group by u_name;
++--------+--------------+
+| u_name | total_amount |
++--------+--------------+
+| Rahul  |         1020 |
+| Neha   |         2500 |
+| Simran |         2500 |
++--------+--------------+
+3 rows in set (0.00 sec)
+
+mysql> select day(o_date),month(o_date),year(o_date) from orders;
++-------------+---------------+--------------+
+| day(o_date) | month(o_date) | year(o_date) |
++-------------+---------------+--------------+
+|           8 |             5 |         2023 |
+|           8 |             5 |         2023 |
+|           8 |             5 |         2023 |
+|           8 |             5 |         2023 |
+|           8 |             5 |         2023 |
++-------------+---------------+--------------+
+5 rows in set (0.01 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2023-05-08 01:25:47 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select current_date;
++--------------+
+| current_date |
++--------------+
+| 2023-05-08   |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select curtime();
++-----------+
+| curtime() |
++-----------+
+| 01:25:06  |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select date_add(CURRENT_DATE,interval 6 month) as '6 months future';
++-----------------+
+| 6 months future |
++-----------------+
+| 2023-11-08      |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> select date_add(CURRENT_DATE,interval -6 month) as '6 months past';
++---------------+
+| 6 months past |
++---------------+
+| 2022-11-08    |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select item from orders group by item;
++------------+
+| item       |
++------------+
+| brush      |
+| shirt      |
+| jeans      |
+| blue jeans |
++------------+
+4 rows in set (0.00 sec)
+
+mysql> select max(price) as 'highest price' from orders;
++---------------+
+| highest price |
++---------------+
+|          2500 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select min(price) as 'lowest price' from orders;
++--------------+
+| lowest price |
++--------------+
+|           20 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select * from orders where item not in('shirt','brush');
++------+--------+------+------------+-------+---------+------------+
+| u_id | u_name | o_id | item       | price | address | o_date     |
++------+--------+------+------------+-------+---------+------------+
+|  101 | Neha   |    5 | jeans      |  1500 | nagpur  | 2023-05-08 |
+|  102 | Simran |    6 | blue jeans |  2500 | pune    | 2023-05-08 |
++------+--------+------+------------+-------+---------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from i_orders where quantity in (1,5,10);
++------+-------+----------+
+| o_id | item  | quantity |
++------+-------+----------+
+|    1 | brush |        5 |
+|    4 | shirt |        1 |
++------+-------+----------+
+2 rows in set (0.00 sec)
+
+mysql> insert into orders (u_id,u_name,item,price,address,o_date) values (100,'Simran','apple 7',40000,'pune',CURRENT_DATE);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> update orders set price='50000' where o_id=5;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from orders;
++------+--------+------+------------+-------+---------+------------+
+| u_id | u_name | o_id | item       | price | address | o_date     |
++------+--------+------+------------+-------+---------+------------+
+|  100 | Rahul  |    1 | brush      |    20 | pune    | 2023-05-08 |
+|  100 | Rahul  |    3 | shirt      |  1000 | pune    | 2023-05-08 |
+|  101 | Neha   |    4 | shirt      |  1000 | nagpur  | 2023-05-08 |
+|  101 | Neha   |    5 | jeans      | 50000 | nagpur  | 2023-05-08 |
+|  102 | Simran |    6 | blue jeans |  2500 | pune    | 2023-05-08 |
+|  100 | Simran | 1002 | apple 7    | 40000 | pune    | 2023-05-08 |
++------+--------+------+------------+-------+---------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from orders where price>(select price from orders where item='apple 7');
++------+--------+------+-------+-------+---------+------------+
+| u_id | u_name | o_id | item  | price | address | o_date     |
++------+--------+------+-------+-------+---------+------------+
+|  101 | Neha   |    5 | jeans | 50000 | nagpur  | 2023-05-08 |
++------+--------+------+-------+-------+---------+------------+
+1 row in set (0.00 sec)
+
+mysql> select max(price) as 'highest price' from orders;
++---------------+
+| highest price |
++---------------+
+|         50000 |
++---------------+
+1 row in set (0.00 sec)
